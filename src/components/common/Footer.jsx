@@ -40,9 +40,9 @@ export default function Footer() {
           <div className="space-y-4 max-w-sm">
             <h3
               onClick={() => goTo("/")}
-              className="text-xl font-extrabold tracking-widest cursor-pointer"
+              className="text-xl font-extrabold tracking-widest text-primary cursor-pointer"
             >
-              PLAN<span className="text-[#6B6B6B] font-semibold">:)</span>B GYM
+              PLAN<span className="text-[#6B6B6B] font-ibold"> B</span> THE GYM
             </h3>
 
             <p
@@ -74,7 +74,7 @@ export default function Footer() {
 
           {/* SITEMAP */}
           <div className="space-y-4 max-w-xs">
-            <h4 className="font-bold uppercase text-sm">Sitemap</h4>
+            <h4 className="font-bold uppercase text-lg text-primary">Sitemap</h4>
             <ul className="space-y-1.5 text-sm">
               {sitemap.map((item) => {
                 const isActive = location.pathname === item.path;
@@ -86,7 +86,7 @@ export default function Footer() {
                       ${
                         isActive
                           ? "text-[#2E2E2E] font-medium"
-                          : "text-[#6B6B6B] hover:text-[#2E2E2E]"
+                          : "text-[#6B6B6B] hover:text-primary"
                       }`}
                   >
                     {item.label}
@@ -98,7 +98,7 @@ export default function Footer() {
 
           {/* SOCIAL */}
           <div className="space-y-4 max-w-xs">
-            <h4 className="font-bold uppercase text-sm">Follow Us</h4>
+            <h4 className="font-bold uppercase text-lg text-primary">Follow Us</h4>
             <div className="grid grid-cols-3 gap-3 max-w-[160px]">
               {[
                 { icon: <FaFacebookF />, link: "#" },
@@ -113,7 +113,7 @@ export default function Footer() {
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 border rounded-lg flex items-center justify-center hover:bg-[#2E2E2E] hover:text-[#F5F1E8] transition"
+                  className="w-9 h-9 border border-dark rounded-lg flex items-center justify-center hover:bg-primary hover:text-[#F5F1E8] transition"
                 >
                   {icon}
                 </a>
