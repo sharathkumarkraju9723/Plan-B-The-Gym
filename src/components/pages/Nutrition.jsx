@@ -8,23 +8,25 @@ export default function Nutrition() {
   const [submitted, setSubmitted] = useState(false);
 
   const [form, setForm] = useState({
-    Name: "",
-    Mobile: "",
-    Email: "",
-    Program: "",
+    name: "",
+    mobile: "",
+    email: "",
+    program: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (submitted || !form.Name || !form.Mobile) return;
+    if (!form.name || !form.mobile || submitted) return;
 
     const message = `
-Nutrition Coaching Enquiry – PLAN B THE GYM
+Nutrition Consultation Enquiry – PLAN B THE GYM
 
-Name: ${form.Name}
-Mobile: ${form.Mobile}
-Email: ${form.Email || "Not Provided"}
-Program: ${form.Program || "Not Selected"}
+Name: ${form.name}
+Mobile: ${form.mobile}
+Email: ${form.email || "Not Provided"}
+Program: ${form.program || "Not Selected"}
+
+Requesting a nutrition consultation.
 `;
 
     window.open(
@@ -39,76 +41,110 @@ Program: ${form.Program || "Not Selected"}
     <>
       {/* HERO */}
       <section
-        className="relative h-[60vh] bg-cover bg-center flex items-center justify-center"
+        className="relative min-h-[70vh] bg-cover bg-center flex items-center justify-center"
         style={{ backgroundImage: `url(${NutriBg})` }}
       >
-        <div className="absolute inset-0 bg-black/45" />
-        <h1 className="relative z-10 uppercase italic font-extrabold text-white text-3xl sm:text-4xl md:text-5xl">
-          Nutrition Coaching
-        </h1>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 text-center px-4">
+          <h1 className="mt-40 uppercase italic font-extrabold text-white text-4xl md:text-6xl lg:text-7xl">
+            Nutrition Coaching
+          </h1>
+          <p className="mt-4 text-lg text-gray-200">
+            Fuel your training with smarter nutrition at PLAN B THE GYM
+          </p>
+        </div>
       </section>
 
-      {/* CONTENT */}
-      <section className="bg-white text-black py-14">
-        <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10">
+      {/* MAIN */}
+      <section className="bg-white py-16 text-black">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
 
           {/* LEFT */}
-          <div className="space-y-10">
+          <div className="order-3 lg:order-1 space-y-6">
+            <iframe
+              title="Plan B The Gym Location"
+              src="https://www.google.com/maps?q=Plan+B+The+Gym,+Kuvempu+Nagara,+Mysuru&output=embed"
+              className="w-full h-64 rounded border"
+              loading="lazy"
+            />
 
-            <div>
-              <h2 className="uppercase italic font-extrabold text-xl sm:text-2xl">
-                Nutrition Coaching at PLAN B THE GYM – Mysore
-              </h2>
-              <p className="mt-2 text-sm">
-                Personalised nutrition guidance to support training performance,
-                energy levels, and long-term healthy habits.
-              </p>
-            </div>
+            <img
+              src={NutriBg}
+              alt="Nutrition Coaching at Plan B The Gym"
+              className="w-full min-h-[45vh] object-cover rounded-lg"
+            />
+          </div>
+
+          {/* CENTER */}
+          <div ref={formRef} className="order-1 lg:order-2 lg:col-span-2">
+            <h2 className="uppercase italic font-extrabold text-3xl md:text-5xl">
+              Nutrition Coaching at PLAN B THE GYM – Mysore
+            </h2>
+
+            <p className="mt-4 text-lg">
+              Personalized nutrition guidance to support fat loss, muscle gain,
+              recovery, and long-term health — aligned with your workouts.
+            </p>
+
+            <p className="mt-3 text-lg text-gray-500">
+              Energy • Recovery • Body Composition • Lifestyle Balance
+            </p>
 
             {/* FORM */}
-            <div
-              ref={formRef}
-              className="bg-gray-100 border rounded-md p-5 max-w-[420px]"
-            >
-              <h3 className="uppercase italic font-extrabold text-lg mb-4">
-                Book Your Nutrition Consultation
-              </h3>
-
-              <form onSubmit={handleSubmit} className="space-y-4 text-sm">
+            <div className="mt-10 bg-gray-200 rounded-xl p-6 max-w-xl">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <h3 className="uppercase italic text-primary font-extrabold text-3xl">
+                  Book a Nutrition Consultation
+                </h3>
 
                 <input
                   placeholder="Name *"
                   className="w-full border px-4 py-3 rounded"
-                  onChange={(e) => setForm({ ...form, Name: e.target.value })}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
                 />
 
                 <input
                   placeholder="Mobile *"
                   className="w-full border px-4 py-3 rounded"
-                  onChange={(e) => setForm({ ...form, Mobile: e.target.value })}
+                  onChange={(e) => setForm({ ...form, mobile: e.target.value })}
                 />
 
                 <input
                   placeholder="Email (Optional)"
                   className="w-full border px-4 py-3 rounded"
-                  onChange={(e) => setForm({ ...form, Email: e.target.value })}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
                 />
 
-                <select
-                  className="w-full border px-4 py-3 rounded"
-                  onChange={(e) => setForm({ ...form, Program: e.target.value })}
-                >
-                  <option value="">Select a Program</option>
-                  <option>Starter Nutrition Plan</option>
-                  <option>Balanced Lifestyle Nutrition</option>
-                  <option>Weight Management Support</option>
-                  <option>Women’s Wellness Nutrition</option>
-                  <option>Long-Term Lifestyle Coaching</option>
-                </select>
+                {/* PROGRAM SELECT */}
+                <div className="relative">
+                  <select
+                    className="w-full border px-4 py-3 rounded appearance-none"
+                    onChange={(e) =>
+                      setForm({ ...form, program: e.target.value })
+                    }
+                  >
+                    <option value="">Select a Program</option>
+                    <option>Fat Loss Nutrition</option>
+                    <option>Muscle & Strength Support</option>
+                    <option>Lifestyle & Wellness</option>
+                    <option>Women’s Nutrition</option>
+                    <option>Long-Term Health Coaching</option>
+                  </select>
 
-                <label className="flex gap-2 text-xs">
+                  <svg
+                    className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+
+                <label className="flex gap-2 text-sm">
                   <input type="checkbox" required />
-                  I am interested in nutrition coaching at PLAN B THE GYM
+                  I want to consult a nutrition coach
                 </label>
 
                 <div className="flex justify-center">
@@ -116,9 +152,10 @@ Program: ${form.Program || "Not Selected"}
                     type="submit"
                     disabled={submitted}
                     className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border-2 transition
-                      ${submitted
-                        ? "bg-green-600 text-white border-green-700 cursor-not-allowed"
-                        : "bg-primary text-white border-black hover:bg-white hover:text-black"
+                      ${
+                        submitted
+                          ? "bg-green-600 text-white border-green-700 cursor-not-allowed"
+                          : "bg-primary text-white border-black hover:bg-white hover:text-black"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Consultation"}
@@ -127,57 +164,47 @@ Program: ${form.Program || "Not Selected"}
 
                 {submitted && (
                   <div className="bg-green-50 border border-green-500 text-green-700 p-3 rounded-lg text-center">
-                    Our team will contact you shortly
+                    <p className="font-bold">Request Sent Successfully</p>
+                    <p className="text-sm">
+                      Our team will contact you shortly
+                    </p>
                   </div>
                 )}
               </form>
             </div>
+          </div>
+        </div>
+
+        {/* WHY + HOW */}
+        <div className="mt-20 max-w-5xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
             {/* WHY */}
             <div>
-              <h3 className="uppercase italic font-extrabold text-lg">
+              <h3 className="uppercase italic font-extrabold text-2xl mb-4">
                 Why Nutrition Coaching?
               </h3>
-              <ul className="mt-3 list-disc ml-5 text-sm space-y-1">
+              <ul className="list-disc ml-6 text-sm space-y-2">
                 <li>Improve workout performance & recovery</li>
-                <li>Boost daily energy and focus</li>
-                <li>Create sustainable eating habits</li>
-                <li>Support long-term health goals</li>
+                <li>Support fat loss and muscle gain goals</li>
+                <li>Build sustainable eating habits</li>
+                <li>Reduce confusion around diet & supplements</li>
               </ul>
             </div>
 
             {/* HOW */}
             <div>
-              <h3 className="uppercase italic font-extrabold text-lg">
+              <h3 className="uppercase italic font-extrabold text-2xl mb-4">
                 How It Works
               </h3>
-              <ul className="mt-3 list-disc ml-5 text-sm space-y-1">
-                <li>Initial lifestyle & goal assessment</li>
-                <li>Personalised nutrition guidance</li>
-                <li>Ongoing support & follow-ups</li>
+              <ul className="list-disc ml-6 text-sm space-y-2">
+                <li>Initial assessment of lifestyle & goals</li>
+                <li>Customized nutrition guidance</li>
+                <li>Ongoing support & progress tracking</li>
               </ul>
             </div>
 
           </div>
-
-          {/* RIGHT SIDEBAR */}
-          <aside className="space-y-6">
-            <div className="border rounded-md overflow-hidden h-[180px]">
-              <iframe
-                title="Plan B The Gym Location"
-                src="https://www.google.com/maps?q=Plan+B+The+Gym,+Kuvempu+Nagara,+Mysuru&output=embed"
-                className="w-full h-full border-0"
-                loading="lazy"
-              />
-            </div>
-
-            <img
-              src={NutriBg}
-              alt="Nutrition Coaching"
-              className="w-full h-[240px] object-cover rounded-md"
-            />
-          </aside>
-
         </div>
       </section>
     </>
