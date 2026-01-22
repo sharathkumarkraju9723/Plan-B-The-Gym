@@ -94,7 +94,7 @@ Interested in trying the gym with a free guest pass.
             {/* FORM */}
             <div className="mt-10 bg-gray-200 rounded-xl p-6 max-w-xl">
               <form onSubmit={handleSubmit} className="space-y-5">
-                <h3 className="uppercase italic text-primary font-extrabold text-3xl">
+                <h3 className="uppercase italic text-[#2a2a2a] font-extrabold text-3xl">
                   Claim Your Free Guest Pass
                 </h3>
 
@@ -135,7 +135,7 @@ Interested in trying the gym with a free guest pass.
                       ${
                         submitted
                           ? "bg-green-600 text-white border-green-700 cursor-not-allowed"
-                          : "bg-primary text-white border-black hover:bg-white hover:text-black"
+                          : "bg-[#2f6f5f] text-white border-black hover:bg-white hover:text-[#2f6f5f]"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Free Guest Pass"}
