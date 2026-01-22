@@ -25,7 +25,7 @@ export default function Hero() {
 
           <button
             onClick={() => setOpen(true)}
-            className="mt-6 bg-[#2F6F5F] px-8 py-3 border border-white text-white  hover:border  border-[#2F6F5F] uppercase font-bold rounded-xl transition-all hover:bg-white hover:text-[#2F6F5F] hover:scale-105"
+            className="mt-6 bg-[#2F6F5F] px-8 py-3 border border-black text-white  hover:border  border-[#2F6F5F] uppercase font-bold rounded-xl transition-all hover:bg-white hover:text-[#2F6F5F] hover:scale-105"
           >
             Book Free Trial
           </button>

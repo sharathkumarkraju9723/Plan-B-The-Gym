@@ -75,14 +75,14 @@ export default function ExperienceWaves() {
           
             <button
               onClick={() => setShowSchedule(true)}
-              className="bg-[#2F6F5F] px-8 py-3 border border-white text-white uppercase font-bold rounded-xl transition hover:bg-white hover:text-[#2F6F5F] hover:scale-105"
+              className="bg-[#2F6F5F] px-8 py-3 border border-black text-white uppercase font-bold rounded-xl transition hover:bg-white hover:text-[#2F6F5F] hover:scale-105"
             >
               View Group Class Schedule
             </button>
 
             <button
               onClick={() => setShowForm(true)}
-              className="bg-[#2F6F5F] px-8 py-3 border border-white text-white uppercase font-bold rounded-xl hover:bg-white hover:text-[#2F6F5F] hover:scale-105"
+              className="bg-[#2F6F5F] px-8 py-3 border border-black text-white uppercase font-bold rounded-xl hover:bg-white hover:text-[#2F6F5F] hover:scale-105"
             >
               Try a Free  Group Class
             </button>

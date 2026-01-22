@@ -26,7 +26,7 @@ export default function GymZone() {
 
             <button
               onClick={() => setOpen(true)}
-              className="mt-6 sm:w-auto bg-[#2F6F5F] px-8 py-3  border border-white text-white uppercase font-bold rounded-xl transition-all duration-300 hover:bg-white  hover:text-[#2F6F5F] hover:scale-105 active:bg-white active:text-black active:scale-95">
+              className="mt-6 sm:w-auto bg-[#2F6F5F] px-8 py-3  border border-black text-white uppercase font-bold rounded-xl transition-all duration-300 hover:bg-white  hover:text-[#2F6F5F] hover:scale-105 active:bg-white active:text-black active:scale-95">
               Join PLAN B Today
             </button>
 

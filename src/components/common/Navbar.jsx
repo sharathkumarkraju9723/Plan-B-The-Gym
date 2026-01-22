@@ -48,9 +48,9 @@ export default function Navbar() {
                 className="
                   relative cursor-pointer text-[#2E2E2E]
                   transition duration-300
-                  hover:text-[#6B6B6B]
+                  hover:text-[#2F6F5F]
                   after:absolute after:left-0 after:-bottom-1
-                  after:h-[2px] after:w-0 after:bg-[#6B6B6B]
+                  after:h-[2px] after:w-0 after:bg-[#2F5F6F]
                   after:transition-all after:duration-300
                   hover:after:w-full
                 "
@@ -81,7 +81,7 @@ export default function Navbar() {
               <li
                 key={item.label}
                 onClick={() => goTo(item.path)}
-                className="cursor-pointer text-[#2E2E2E] hover:text-[#6B6B6B] transition"
+                className="cursor-pointer text-[#2E2E2E] hover:text-[#2f6f5f] transition"
               >
                 {item.label}
               </li>
