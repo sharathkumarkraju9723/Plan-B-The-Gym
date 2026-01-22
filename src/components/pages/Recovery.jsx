@@ -124,10 +124,7 @@ Interested in booking a recovery session.
 
                 <div className="relative">
                   <select
-                    className="w-full border px-4 py-3 rounded"
-                    onChange={(e) =>
-                      setForm({ ...form, Service: e.target.value })
-                    }
+                    className="w-full appearance-none border border-black px-4 py-3 rounded bg-white focus:outline-none"
                   >
                     <option value="">Select Recovery Service</option>
                     <option>Percussive Massage Therapy</option>
@@ -147,6 +144,7 @@ Interested in booking a recovery session.
                   </svg>
                 </div>
 
+
                 <label className="flex gap-2 text-sm">
                   <input type="checkbox" />
                   I want to book a recovery session
@@ -157,10 +155,9 @@ Interested in booking a recovery session.
                     type="submit"
                     disabled={submitted}
                     className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border-2 transition
-                      ${
-                        submitted
-                          ? "bg-green-600 text-white border-green-700 cursor-not-allowed"
-                          : "bg-primary text-white border-black hover:bg-white hover:text-black"
+                      ${submitted
+                        ? "bg-green-600 text-white border-green-700 cursor-not-allowed"
+                        : "bg-primary text-white border-black hover:bg-white hover:text-black"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Recovery Session"}
