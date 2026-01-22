@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../common/assets/Plan-B.png";
+import logoB from "../common/assets/Plan-B-logo.png";
 
 const menuItems = [
   { label: "Try Us", path: "/try-us" },
@@ -23,19 +24,27 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-[#F5F1E8]/60 border-[#DADADA] transition-all duration-300">
+    <nav className="fixed top-0 w-full z-50 bg-[#F5F1E6]/60 border-[#DADADA] transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
         <div className="flex items-center justify-between h-24 sm:h-28">
 
           {/* LOGO */}
           <div
             onClick={() => goTo("/")}
-            className="cursor-pointer transition"
+            className="cursor-pointer flex items-center transition"
           >
+            {/* Small & medium screens → Full logo */}
             <img
               src={logo}
               alt="Plan B The Gym"
-              className="h-20 sm:h-24 w-auto object-contain brightness-50 contrast-180 "
+              className=" block lg:hidden h-[56px] sm:h-[72px] max-w-[80%] w-auto object-contain  brightness-50 contrast-200 transition duration-300"
+            />
+
+            {/* Large screens → ONLY B logo */}
+            <img
+              src={logoB}
+              alt="Plan B Logo"
+              className="  hidden lg:block h-[112px] w-auto object-contain brightness-50 contrast-200  transition duration-300  "
             />
           </div>
 
@@ -46,11 +55,11 @@ export default function Navbar() {
                 key={item.label}
                 onClick={() => goTo(item.path)}
                 className="
-                  relative cursor-pointer text-[#2E2E2E]
+                  relative cursor-pointer text-black
                   transition duration-300
-                  hover:text-[#2F6F5F]
+                  hover:text-[#1f4f43]
                   after:absolute after:left-0 after:-bottom-1
-                  after:h-[2px] after:w-0 after:bg-[#2F5F6F]
+                  after:h-[2px] after:w-0 after:bg-[#1F4F43]
                   after:transition-all after:duration-300
                   hover:after:w-full
                 "

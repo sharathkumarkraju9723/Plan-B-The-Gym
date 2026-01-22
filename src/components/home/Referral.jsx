@@ -26,19 +26,19 @@ Your friend *${form.yourName}* has invited you to join
 *PLAN B THE GYM – Mysore*
 
 Why you’ll love training with us:
-• 🏋️ Modern gym facilities  
-• 🚻 Separate comfort zones  
-• 👨‍🏫 Expert trainers  
+• Modern gym facilities  
+• Separate comfort zones  
+• Expert trainers  
 
 Try a free session today!
-👉 https://chat.whatsapp.com/YOUR_GROUP_LINK_HERE`;
+https://chat.whatsapp.com/JsfMMkSXt3g0aecEOnTBCb`;
 
     window.location.href = `https://wa.me/91${mobile}?text=${encodeURIComponent(message)}`;
   };
 
   return (
-    <section className="py-14 bg-gradient-to-r from-white to-red-200">
-      <div className="max-w-3xl mx-auto px-6 text-center">
+    <section className="py-14 bg-gradient-to-r from-white to-gray-300">
+      <div className="max-w-3xl mx-auto  text-black px-6 text-center">
 
         <p className="uppercase text-sm tracking-widest text-gray-600 mb-2">
           Stronger together, better together
