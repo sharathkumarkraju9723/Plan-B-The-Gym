@@ -31,111 +31,102 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#F5F1E8] text-[#2E2E2E]">
-      {/* TOP DIVIDER */}
       <div className="h-px bg-[#E5E5E5]" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="max-w-7xl mx-auto px-6 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr] gap-10">
 
-        {/* BRAND */}
-        <div className="space-y-3">
-          <h3
-            onClick={() => goTo("/")}
-            className="text-xl font-extrabold tracking-widest text-[#2E2E2E] cursor-pointer hover:opacity-80 transition"
-          >
-            PLAN<span className="text-[#6B6B6B] font-semibold">:)</span>B GYM
-          </h3>
-
-          <p
-            onClick={() => goTo("/location")}
-            className="text-sm text-[#6B6B6B] max-w-sm leading-relaxed cursor-pointer hover:text-[#2E2E2E] transition"
-          >
-            2nd floor, 557/A, New Kantharaj Urs Rd, near Sri S Nijalingappa Circle,
-            TK Layout 4th Stage, Kuvempu Nagara, Mysuru, Karnataka 570023
-          </p>
-
-          <p className="text-sm text-[#6B6B6B]">
-            <span className="text-[#2E2E2E] font-medium">Phone:</span>{" "}
-            <a href="tel:+919876543210" className="hover:text-[#2E2E2E] transition">
-              +91 98765 43210
-            </a>
-          </p>
-
-          <p className="text-sm text-[#6B6B6B]">
-            <span className="text-[#2E2E2E] font-medium">Email:</span>{" "}
-            <a
-              href="mailto:info@planbgym.com"
-              className="hover:text-[#2E2E2E] transition"
+          {/* BRAND */}
+          <div className="space-y-4 max-w-sm">
+            <h3
+              onClick={() => goTo("/")}
+              className="text-xl font-extrabold tracking-widest cursor-pointer"
             >
-              info@planbthegym.com
-            </a>
-          </p>
-        </div>
+              PLAN<span className="text-[#6B6B6B] font-semibold">:)</span>B GYM
+            </h3>
 
-        {/* SITEMAP */}
-        <div>
-          <h4 className="text-[#2E2E2E] text-base font-bold uppercase mb-3">
-            Sitemap
-          </h4>
+            <p
+              onClick={() => goTo("/location")}
+              className="text-sm text-[#6B6B6B] leading-relaxed cursor-pointer hover:text-[#2E2E2E]"
+            >
+              2nd Floor, 557/A, New Kantharaj Urs Rd,<br />
+              Near Sri S Nijalingappa Circle,<br />
+              Kuvempu Nagara, Mysuru – 570023
+            </p>
 
-          <ul className="space-y-1.5 text-sm">
-            {sitemap.map((item) => {
-              const isActive = location.pathname === item.path;
-
-              return (
-                <li
-                  key={item.path}
-                  onClick={() => goTo(item.path)}
-                  className={`relative w-fit cursor-pointer transition
-                    ${
-                      isActive
-                        ? "text-[#2E2E2E] font-medium"
-                        : "text-[#6B6B6B] hover:text-[#2E2E2E]"
-                    }
-                    after:absolute after:left-0 after:-bottom-0.5 after:h-[2px]
-                    after:bg-[#2E2E2E] after:transition-all after:duration-300
-                    ${isActive ? "after:w-full" : "after:w-0 hover:after:w-full"}
-                  `}
-                >
-                  {item.label}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
-        {/* SOCIAL */}
-        <div>
-          <h4 className="text-[#2E2E2E] text-base font-bold uppercase mb-4">
-            Follow Us
-          </h4>
-
-          <div className="grid grid-cols-3 gap-3 max-w-[160px]">
-            {[
-              { icon: <FaFacebookF />, link: "https://facebook.com" },
-              { icon: <FaInstagram />, link: "https://instagram.com" },
-              { icon: <FaTwitter />, link: "https://twitter.com" },
-              { icon: <FaYoutube />, link: "https://youtube.com" },
-              { icon: <FaLinkedinIn />, link: "https://linkedin.com" },
-              { icon: <FaWhatsapp />, link: "https://whatsapp.com" },
-            ].map(({ icon, link }, i) => (
-              <a
-                key={i}
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 border border-[#2E2E2E] text-[#2E2E2E] rounded-lg flex items-center justify-center text-sm hover:bg-[#2E2E2E] hover:text-[#F5F1E8] transition"
-              >
-                {icon}
+            <p className="text-sm">
+              <strong>Phone:</strong>{" "}
+              <a href="tel:+919876543210" className="hover:underline">
+                +91 98765 43210
               </a>
-            ))}
+            </p>
+
+            <p className="text-sm">
+              <strong>Email:</strong>{" "}
+              <a
+                href="mailto:info@planbthegym.com"
+                className="hover:underline"
+              >
+                info@planbthegym.com
+              </a>
+            </p>
           </div>
+
+          {/* SITEMAP */}
+          <div className="space-y-4 max-w-xs">
+            <h4 className="font-bold uppercase text-sm">Sitemap</h4>
+            <ul className="space-y-1.5 text-sm">
+              {sitemap.map((item) => {
+                const isActive = location.pathname === item.path;
+                return (
+                  <li
+                    key={item.path}
+                    onClick={() => goTo(item.path)}
+                    className={`cursor-pointer w-fit transition
+                      ${
+                        isActive
+                          ? "text-[#2E2E2E] font-medium"
+                          : "text-[#6B6B6B] hover:text-[#2E2E2E]"
+                      }`}
+                  >
+                    {item.label}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {/* SOCIAL */}
+          <div className="space-y-4 max-w-xs">
+            <h4 className="font-bold uppercase text-sm">Follow Us</h4>
+            <div className="grid grid-cols-3 gap-3 max-w-[160px]">
+              {[
+                { icon: <FaFacebookF />, link: "#" },
+                { icon: <FaInstagram />, link: "#" },
+                { icon: <FaTwitter />, link: "#" },
+                { icon: <FaYoutube />, link: "#" },
+                { icon: <FaLinkedinIn />, link: "#" },
+                { icon: <FaWhatsapp />, link: "#" },
+              ].map(({ icon, link }, i) => (
+                <a
+                  key={i}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 border rounded-lg flex items-center justify-center hover:bg-[#2E2E2E] hover:text-[#F5F1E8] transition"
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
 
-      {/* BOTTOM */}
-      <div className="border-t border-[#E5E5E5] py-4 px-4 text-xs flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto text-[#9A9A9A]">
-        <p>© 2026 Plan-B Gym. All Rights Reserved.</p>
-        <p className="mt-1 border-[#E5E5E5] sm:mt-0">
+      <div className="border-t border-[#E5E5E5] py-4 text-xs flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto px-6 text-[#9A9A9A]">
+        <p>© 2026 PLAN B THE GYM. All Rights Reserved.</p>
+        <p>
           Developed by <span className="text-[#2E2E2E]">Envision Tech Sol</span>
         </p>
       </div>
