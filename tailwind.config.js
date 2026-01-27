@@ -7,18 +7,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        /* BRAND */
-        primary: "#2F6F5F",     // PLAN B green (buttons, highlights)
-        secondary: "#F5F1E8",   // light beige background
-        
+        /* BACKGROUNDS */
+        base: "#F5F5F5",          // app background
+        section: "#EAEAEA",       // section background (light blackish)
+        surface: "#EFEFEF",       // forms / cards (light blackish)
+
+        /* BUTTONS */
+        button: "#C2C5C9",        // silver gray
+        buttonHover: "#AEB2B7",   // darker silver
+        buttonBorder: "#000307",
+
         /* TEXT */
-        dark: "#2a2a2a",        // main text
-        muted: "#6B6B6B",       // secondary text
-        light: "#9A9A9A",       // captions / footer text
+        textPrimary: "#000000",   // dark black
+        textMuted: "#444444",     // dark gray
+        textSubtle: "#666666",    // medium gray
+        textLight: "#FFFFFF",     // text on images
 
         /* UI */
-        border: "#E5E5E5",
-        surface: "#FFFFFF",
+        divider: "#D0D0D0",
       },
 
       fontFamily: {

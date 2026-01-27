@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-dark text-white;
+@layer base {
+  body {
+    @apply bg-base text-textPrimary font-sans;
+  }
+
+  section {
+    @apply bg-section;
+  }
+
+  button {
+    @apply bg-button text-black border border-buttonBorder;
+  }
+
+  button:hover {
+    @apply bg-buttonHover;
+  }
 }
