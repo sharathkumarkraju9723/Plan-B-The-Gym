@@ -10,7 +10,7 @@ import GymZone from "./components/home/GymZone";
 import BestExperience from "./components/home/BestExperience";
 import ExperienceWaves from "./components/home/ExperienceWaves";
 import Referral from "./components/home/Referral";
-import Forms from "./components/home/Forms";
+import CoffeeZone from "./components/home/CoffeeZone";
 
 // PAGES
 import TryUs from "./components/pages/TryUs";
@@ -46,7 +46,7 @@ export default function App() {
               <BestExperience />
               <ExperienceWaves />
               <Referral />
-              <Forms />
+              <CoffeeZone />
             </>
           }
         />

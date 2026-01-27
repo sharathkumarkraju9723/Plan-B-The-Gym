@@ -9,7 +9,7 @@ export default function Hero() {
     <>
       {/* HERO */}
       <section
-        className="relative w-full min-h-[70vh] bg-no-repeat bg-center bg-contain flex items-center justify-center bg-section"
+        className="relative w-full min-h-[70vh]  bg-center bg-contain flex items-center justify-center bg-section"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
         {/* Overlay */}

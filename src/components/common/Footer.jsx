@@ -8,21 +8,30 @@ import {
 } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 
+const sitemap = [
+  { label: "Try Us", path: "/try-us" },
+  { label: "Join Us", path: "/join-us" },
+  { label: "Classes", path: "/classes" },
+  { label: "Recovery", path: "/recovery" },
+  { label: "Nutrition", path: "/nutrition" },
+  { label: "InBody", path: "/inbody" },
+  { label: "Location", path: "/location" },
+  { label: "Terms & Conditions", path: "/terms" },
+  { label: "Membership Policy", path: "/membership-policy" },
+];
+
+const socials = [
+  { icon: FaFacebookF, url: "#" },
+  { icon: FaInstagram, url: "#" },
+  { icon: FaTwitter, url: "#" },
+  { icon: FaYoutube, url: "#" },
+  { icon: FaLinkedinIn, url: "#" },
+  { icon: FaWhatsapp, url: "#" },
+];
+
 export default function Footer() {
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const sitemap = [
-    { label: "Try Us", path: "/try-us" },
-    { label: "Join Us", path: "/join-us" },
-    { label: "Classes", path: "/classes" },
-    { label: "Recovery", path: "/recovery" },
-    { label: "Nutrition", path: "/nutrition" },
-    { label: "InBody", path: "/inbody" },
-    { label: "Location", path: "/location" },
-    { label: "Terms & Conditions", path: "/terms" },
-    { label: "Membership Policy", path: "/membership-policy" },
-  ];
+  const { pathname } = useLocation();
 
   const goTo = (path) => {
     navigate(path);
@@ -30,24 +39,28 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#F5F1E8] text-[#2E2E2E]">
-      <div className="h-px bg-[#E5E5E5]" />
+    <footer className="bg-base text-textPrimary">
+      <div className="h-px bg-divider" />
 
-      <div className="max-w-7xl mx-auto px-6 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr] gap-10">
-
+      {/* MAIN CONTENT */}
+      <div
+        className="
+          max-w-7xl mx-auto px-6 py-14 grid grid-cols-2 md:grid-cols-[1.2fr_1fr_1fr] gap-8 md:gap-10  items-start "
+      >
+        {/*  Brand + Address + Social (MOBILE ONLY) */}
+        <div className="space-y-10 max-w-xs sm:max-w-sm">
           {/* BRAND */}
-          <div className="space-y-4 max-w-sm">
+          <div className="space-y-4">
             <h3
               onClick={() => goTo("/")}
-              className="text-xl font-extrabold tracking-widest text-primary cursor-pointer"
+              className="text-xl font-extrabold tracking-widest cursor-pointer"
             >
-              PLAN<span className="text-[#6B6B6B] font-ibold"> B</span> THE GYM
+              PLAN <span className="text-textSubtle">B</span> THE GYM
             </h3>
 
             <p
               onClick={() => goTo("/location")}
-              className="text-sm text-[#6B6B6B] leading-relaxed cursor-pointer hover:text-[#2E2E2E]"
+              className="text-sm text-textSubtle leading-relaxed cursor-pointer hover:text-textPrimary"
             >
               2nd Floor, 557/A, New Kantharaj Urs Rd,<br />
               Near Sri S Nijalingappa Circle,<br />
@@ -63,71 +76,74 @@ export default function Footer() {
 
             <p className="text-sm">
               <strong>Email:</strong>{" "}
-              <a
-                href="mailto:info@planbthegym.com"
-                className="hover:underline"
-              >
+              <a href="mailto:info@planbthegym.com" className="hover:underline">
                 info@planbthegym.com
               </a>
             </p>
           </div>
 
-          {/* SITEMAP */}
-          <div className="space-y-4 max-w-xs">
-            <h4 className="font-bold uppercase text-lg text-primary">Sitemap</h4>
-            <ul className="space-y-1.5 text-sm">
-              {sitemap.map((item) => {
-                const isActive = location.pathname === item.path;
-                return (
-                  <li
-                    key={item.path}
-                    onClick={() => goTo(item.path)}
-                    className={`cursor-pointer w-fit transition
-                      ${
-                        isActive
-                          ? "text-[#2E2E2E] font-medium"
-                          : "text-[#6B6B6B] hover:text-primary"
-                      }`}
-                  >
-                    {item.label}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          {/* SOCIAL */}
-          <div className="space-y-4 max-w-xs">
-            <h4 className="font-bold uppercase text-lg text-primary">Follow Us</h4>
+          {/* SOCIAL — MOBILE ONLY */}
+          <div className="space-y-3 md:hidden">
+            <h4 className="font-bold uppercase text-lg mb-1">Follow Us</h4>
             <div className="grid grid-cols-3 gap-3 max-w-[160px]">
-              {[
-                { icon: <FaFacebookF />, link: "#" },
-                { icon: <FaInstagram />, link: "#" },
-                { icon: <FaTwitter />, link: "#" },
-                { icon: <FaYoutube />, link: "#" },
-                { icon: <FaLinkedinIn />, link: "#" },
-                { icon: <FaWhatsapp />, link: "#" },
-              ].map(({ icon, link }, i) => (
+              {socials.map(({ icon: Icon, url }, i) => (
                 <a
                   key={i}
-                  href={link}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 border border-dark rounded-lg flex items-center justify-center hover:bg-primary hover:text-[#F5F1E8] transition"
+                  className="w-9 h-9 border border-divider rounded-lg flex items-center justify-center hover:bg-button transition"
                 >
-                  {icon}
+                  <Icon />
                 </a>
               ))}
             </div>
           </div>
+        </div>
 
+        {/* Sitemap */}
+        <div className="space-y-4 max-w-xs">
+          <h4 className="font-bold uppercase text-lg mb-1">Sitemap</h4>
+          <ul className="space-y-1.5 text-sm">
+            {sitemap.map(({ label, path }) => (
+              <li
+                key={path}
+                onClick={() => goTo(path)}
+                className={`cursor-pointer w-fit transition ${pathname === path
+                  ? "text-textPrimary font-medium"
+                  : "text-textSubtle hover:text-textPrimary"
+                  }`}
+              >
+                {label}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/*  Social (DESKTOP ONLY) */}
+        <div className="hidden md:block space-y-4 max-w-xs">
+          <h4 className="font-bold uppercase text-lg mb-1">Follow Us</h4>
+          <div className="grid grid-cols-3 gap-3 max-w-[160px]">
+            {socials.map(({ icon: Icon, url }, i) => (
+              <a
+                key={i}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 border border-divider rounded-lg flex items-center justify-center hover:bg-button transition"
+              >
+                <Icon />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="border-t border-[#E5E5E5] py-4 text-xs flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto px-6 text-[#9A9A9A]">
+      {/* BOTTOM BAR */}
+      <div className="border-t border-divider py-4 text-xs flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto px-6 text-textSubtle">
         <p>© 2026 PLAN B THE GYM. All Rights Reserved.</p>
         <p>
-          Developed by <span className="text-[#2E2E2E]">Envision Tech Sol</span>
+          Developed by <span className="text-textPrimary">Envision Tech Sol</span>
         </p>
       </div>
     </footer>

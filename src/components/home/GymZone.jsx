@@ -7,30 +7,30 @@ export default function GymZone() {
   return (
     <>
       <section
-        className="relative h-[60vh]  bg-center  bg-contain bg-no-repeat"
+        className="relative h-[60vh]  bg-center  bg-contain  bg-section"
         style={{ backgroundImage: `url(${bgImg})` }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-black/0"></div>
 
         {/* Content */}
-        <div className="relative z-10 h-full flex items-center justify-center text-center">
+        <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
           <div>
-            <p className="text-white uppercase tracking-widest text-lg mb-3">
+            <p className="text-textLight uppercase tracking-widest text-lg mb-3">
               Experience the fitness in PLAN B
             </p>
 
-            <h2 className="text-white uppercase font-semibold italic text-3xl md:text-6xl">
+            <h2 className="text-textLight uppercase font-semibold italic text-3xl md:text-6xl">
               Spacious & Confortable <br /> Training Zone
             </h2>
 
             <button
               onClick={() => setOpen(true)}
-              className="mt-6 sm:w-auto bg-[#2F6F5F] px-8 py-3  border border-black text-white uppercase font-bold rounded-xl transition-all duration-300 hover:bg-white  hover:text-[#2F6F5F] hover:scale-105 active:bg-white active:text-black active:scale-95">
+              className="mt-6 sm:w-auto bg-button px-8 py-3  border-buttonBorder text-textPrimary uppercase font-bold rounded-xl transition-all duration-300 hover:bg-buttonHover  hover:text-textPrimary hover:scale-105 active:bg-white active:text-black active:scale-95">
               Join PLAN B Today
             </button>
 
-            <p className="mt-6 text-gray-100 uppercase tracking-widest text-sm mb-3">
+            <p className="mt-6 text-textLight uppercase tracking-widest text-sm mb-3">
               Explore flexible membership plans designed for your  fitness goals
             </p>
           </div>

@@ -12,32 +12,28 @@ const features = [
 
 export default function BestExperience() {
   return (
-    <section className="py-6 sm:py-20 lg:py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="py-4 bg-section sm:py-16 lg:py-10">
+      <div className=" max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
-        {/* subtitle */}
-        <p className="text-xs sm:text-sm uppercase tracking-widest text-textSubtle mb-3">
+        <p className="text-xs sm:text-sm uppercase tracking-widest text-textSubtle mb-2">
           Professinal trainers. Modern equipments. Real Results.
         </p>
 
-        {/* heading */}
         <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold italic text-textPrimary mb-4">
           The PLAN B Fitness Experience
         </h2>
 
-        {/* description */}
         <p className="text-sm sm:text-base lg:text-lg text-textMuted max-w-2xl mx-auto mb-12">
           Everything at{" "}
-          <span className="text-textPrimary font-semibold">
+          <span className="text-textPrimary font-bold">
             PLAN B THE GYM
           </span>{" "}
           is designed to give you a comfortable, motivating, and result-driven fitness experience.
         </p>
 
-        {/* features */}
         <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8">
-          {features.map((item, i) => (
-            <div key={i} className="text-center">
+          {features.map((item, title) => (
+            <div key={title} className="text-center">
 
               {/* image */}
               <div className="mx-auto mb-4 w-full h-[220px] sm:h-64 lg:h-72 overflow-hidden rounded-lg border border-divider">
@@ -49,7 +45,6 @@ export default function BestExperience() {
                 />
               </div>
 
-              {/* title (normal content text → black) */}
               <p className="text-lg sm:text-lg font-medium text-textPrimary leading-snug">
                 {item.title}
               </p>

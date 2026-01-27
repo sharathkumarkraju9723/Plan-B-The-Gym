@@ -11,13 +11,13 @@ export default function Referral() {
 
   const sendWhatsAppReferral = () => {
     if (!form.yourName || !form.friendMobile) {
-      alert("⚠️ Please enter your name and your friend's mobile number.");
+      alert(" Please enter your name and your friend's mobile number.");
       return;
     }
 
     const mobile = form.friendMobile.replace(/\D/g, "");
     if (mobile.length !== 10) {
-      alert("📱 Please enter a valid 10-digit mobile number.");
+      alert(" Please enter a valid 10-digit mobile number.");
       return;
     }
 
@@ -38,17 +38,17 @@ https://chat.whatsapp.com/JsfMMkSXt3g0aecEOnTBCb`;
 
   return (
     <section className="py-14 bg-gradient-to-r from-white to-gray-300">
-      <div className="max-w-3xl mx-auto  text-black px-6 text-center">
+      <div className="max-w-3xl mx-auto  text-textPrimary px-6 text-center">
 
-        <p className="uppercase text-sm tracking-widest text-gray-600 mb-2">
+        <p className="uppercase text-sm tracking-widest text-textSubtle mb-2">
           Stronger together, better together
         </p>
 
-        <h2 className="uppercase italic font-extrabold text-[#2F6F5F] text-3xl sm:text-4xl mb-4">
+        <h2 className="uppercase italic font-extrabold text-textPrimary text-3xl sm:text-4xl mb-4">
           Bring a Friend. Train Together.
         </h2>
 
-        <p className="text-gray-500 text-base mb-6">
+        <p className="text-textMuted text-base mb-6">
           Invite your friend to experience PLAN B THE GYM.
           Send them a WhatsApp invite and grow stronger together.
         </p>
@@ -64,7 +64,7 @@ https://chat.whatsapp.com/JsfMMkSXt3g0aecEOnTBCb`;
           ].map(([placeholder, key]) => (
             <input
               key={key}
-              className="w-full border px-4 py-2.5"
+              className="w-full border border-divider bg-surface px-4 py-2.5 text-textPrimary placeholder-textSubtle focus:outline-none focus:border-buttonHover"
               placeholder={placeholder}
               value={form[key]}
               onChange={(e) =>
@@ -76,7 +76,7 @@ https://chat.whatsapp.com/JsfMMkSXt3g0aecEOnTBCb`;
           <button
             type="button"
             onClick={sendWhatsAppReferral}
-            className="mt-5 mx-auto flex justify-center  bg-[#2F6F5F] text-white uppercase font-bold px-8 py-3 rounded-xl border border-black transition hover:bg-white hover:text-[#2F6F5F] hover:scale-105"
+            className="mt-5 mx-auto flex justify-center  bg-button text-textPrimary uppercase font-bold px-8 py-3 rounded-xl border border-buttonBorder transition hover:bg-buttonHover  hover:scale-105"
           >
             Invite My Friend
           </button>

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../common/assets/Plan-B.png";
 import logoB from "../common/assets/Plan-B-logo.png";
 
+/* Navigation links */
 const menuItems = [
   { label: "Try Us", path: "/try-us" },
   { label: "Join Us", path: "/join-us" },
@@ -14,9 +15,11 @@ const menuItems = [
 ];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);        // mobile menu state
   const navigate = useNavigate();
+  const location = useLocation();                // current route
 
+  /* Navigate + close mobile menu */
   const goTo = (path) => {
     navigate(path);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -24,80 +27,100 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-[#F5F1E6]/60 border-[#DADADA] transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
-        <div className="flex items-center justify-between h-24 sm:h-28">
+    <>
+      {/* ================= NAVBAR ================= */}
+      <nav className="fixed top-0 w-full z-50 bg-base/80 border-b border-divider backdrop-blur">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-24 sm:h-28">
 
-          {/* LOGO */}
-          <div
-            onClick={() => goTo("/")}
-            className="cursor-pointer flex items-center transition"
-          >
-            {/* Small & medium screens → Full logo */}
-            <img
-              src={logo}
-              alt="Plan B The Gym"
-              className=" block lg:hidden h-[56px] sm:h-[72px] max-w-[80%] w-auto object-contain  brightness-50 contrast-200 transition duration-300"
-            />
+            {/* LOGO */}
+            <div onClick={() => goTo("/")} className="cursor-pointer">
+              <img
+                src={logo}
+                alt="Plan B The Gym"
+                className="block lg:hidden h-[56px] sm:h-[72px]"
+              />
+              <img
+                src={logoB}
+                alt="Plan B Logo"
+                className="hidden lg:block h-[112px]"
+              />
+            </div>
 
-            {/* Large screens → ONLY B logo */}
-            <img
-              src={logoB}
-              alt="Plan B Logo"
-              className="  hidden lg:block h-[112px] w-auto object-contain brightness-50 contrast-200  transition duration-300  "
-            />
+            {/* DESKTOP MENU */}
+            <ul className="hidden lg:flex gap-6 uppercase text-sm font-medium">
+              {menuItems.map((item) => {
+                const active = location.pathname === item.path;
+
+                return (
+                  <li
+                    key={item.label}
+                    onClick={() => goTo(item.path)}
+                    className={`
+                      relative cursor-pointer text-textPrimary
+                      after:absolute after:left-0 after:-bottom-1
+                      after:h-[2px] after:bg-textPrimary
+                      after:transition-all after:duration-300
+                      ${active ? "after:w-full" : "after:w-0 hover:after:w-full"}
+                    `}
+                  >
+                    {item.label}
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* MOBILE HAMBURGER */}
+            <button
+              onClick={() => setOpen(!open)}
+              aria-label="Toggle menu"
+              className="lg:hidden p-3 bg-surface border border-divider rounded-lg shadow-sm flex flex-col gap-1.5"
+            >
+              {/* Animated hamburger → X */}
+              <span className={`w-6 h-0.5 bg-textPrimary transition ${open && "rotate-45 translate-y-2"}`} />
+              <span className={`w-6 h-0.5 bg-textPrimary transition ${open && "opacity-0"}`} />
+              <span className={`w-6 h-0.5 bg-textPrimary transition ${open && "-rotate-45 -translate-y-2"}`} />
+            </button>
           </div>
+        </div>
+      </nav>
 
-          {/* DESKTOP MENU */}
-          <ul className="hidden lg:flex items-center gap-6 uppercase text-sm font-medium">
-            {menuItems.map((item) => (
+      {/* Mobile Menu */}
+      <div
+        className={`
+          fixed top-0 right-0 h-full w-72 bg-surface z-40
+          transform transition-transform duration-300
+          ${open ? "translate-x-0" : "translate-x-full"}
+          lg:hidden border-l border-divider
+        `}
+      >
+        <ul className="flex flex-col items-center mt-32 gap-6 uppercase text-sm font-medium">
+          {menuItems.map((item) => {
+            const active = location.pathname === item.path;
+
+            return (
               <li
                 key={item.label}
                 onClick={() => goTo(item.path)}
-                className="
-                  relative cursor-pointer text-black
-                  transition duration-300
-                  hover:text-[#1f4f43]
-                  after:absolute after:left-0 after:-bottom-1
-                  after:h-[2px] after:w-0 after:bg-[#1F4F43]
-                  after:transition-all after:duration-300
-                  hover:after:w-full
-                "
+                className={`
+                  cursor-pointer transition
+                  ${active ? "text-textPrimary font-semibold" : "text-textMuted hover:text-textPrimary"}
+                `}
               >
                 {item.label}
               </li>
-            ))}
-          </ul>
-
-          {/* MOBILE MENU BUTTON */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="lg:hidden flex flex-col gap-1.5"
-            aria-label="Toggle menu"
-          >
-            <span className="w-6 h-0.5 bg-[#2E2E2E]"></span>
-            <span className="w-6 h-0.5 bg-[#2E2E2E]"></span>
-            <span className="w-6 h-0.5 bg-[#2E2E2E]"></span>
-          </button>
-        </div>
+            );
+          })}
+        </ul>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* Closes menu on tap */}
       {open && (
-        <div className="lg:hidden bg-[#F0F0F0] border-t border-[#DADADA]">
-          <ul className="flex flex-col items-center py-6 gap-5 uppercase text-sm font-medium">
-            {menuItems.map((item) => (
-              <li
-                key={item.label}
-                onClick={() => goTo(item.path)}
-                className="cursor-pointer text-[#2E2E2E] hover:text-[#2f6f5f] transition"
-              >
-                {item.label}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <div
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 bg-black/30 z-30 lg:hidden"
+        />
       )}
-    </nav>
+    </>
   );
 }

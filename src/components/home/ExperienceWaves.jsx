@@ -28,7 +28,7 @@ export default function ExperienceWaves() {
   return (
     <>
       {/* section bg comes from global styles */}
-      <section className="py-16 mb-10">
+      <section className="py-16 mb-10 bg-section">
         <div className="max-w-7xl mx-auto px-4 text-center">
 
           <h2 className="text-3xl uppercase italic font-extrabold text-textPrimary mb-2">
@@ -40,10 +40,16 @@ export default function ExperienceWaves() {
           </p>
 
           <div className="relative">
-            <button className="swiper-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full select-none">
+            <button
+              type="button"
+              className="swiper-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full select-none"
+            >
               ❮
             </button>
-            <button className="swiper-next absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full select-none">
+            <button
+              type="button"
+              className="swiper-next absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full select-none"
+            >
               ❯
             </button>
 
@@ -56,17 +62,17 @@ export default function ExperienceWaves() {
               slidesPerView="auto"
               spaceBetween={24}
             >
-              {images.map((item, i) => (
-                <SwiperSlide key={i} className="!w-[320px] sm:!w-[420px]">
+              {images.map(({ img, title }) => (
+                <SwiperSlide key={title} className="!w-[320px] sm:!w-[420px]">
                   <div className="relative rounded-xl overflow-hidden">
                     <img
-                      src={item.img}
-                      alt={item.title}
+                      src={img}
+                      alt={title}
                       className="w-full h-64 object-cover"
                     />
                     <div className="absolute inset-0 bg-black/30" />
                     <h3 className="absolute bottom-4 left-1/2 -translate-x-1/2 text-textLight font-bold">
-                      {item.title}
+                      {title}
                     </h3>
                   </div>
                 </SwiperSlide>
@@ -75,11 +81,18 @@ export default function ExperienceWaves() {
           </div>
 
           {/* buttons use global silver styles */}
-          <div className="mt-8 flex flex-col items-center gap-4">
-            <button onClick={() => setShowSchedule(true)}>
+          <div className="mt-4 flex flex-col  items-center gap-4">
+            <button className="mt-6 sm:w-auto bg-button px-6 py-3  border-buttonBorder text-textPrimary uppercase font-bold rounded-xl transition-all duration-300 hover:bg-buttonHover  hover:text-textPrimary hover:scale-105 active:bg-white active:text-black active:scale-95 "
+              type="button"
+              onClick={() => setShowSchedule(true)}
+            >
               View Group Class Schedule
             </button>
-            <button onClick={() => setShowForm(true)}>
+
+            <button className="mt-4 sm:w-auto bg-button px-6 py-3  border-buttonBorder text-textPrimary uppercase font-bold rounded-xl transition-all duration-300 hover:bg-buttonHover  hover:text-textPrimary hover:scale-105 active:bg-white  active:scale-95"
+              type="button"
+              onClick={() => setShowForm(true)}
+            >
               Try a Free Group Class
             </button>
           </div>
