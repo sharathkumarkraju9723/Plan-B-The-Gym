@@ -35,7 +35,7 @@ export default function ExperienceWaves() {
             Experience PLAN B THE GYM
           </h2>
 
-          <p className="text-textMuted mb-10">
+          <p className="text-textSubtle/60 mb-10">
             High-energy group workout designed to build strength, flexibility, and confidence
           </p>
 
