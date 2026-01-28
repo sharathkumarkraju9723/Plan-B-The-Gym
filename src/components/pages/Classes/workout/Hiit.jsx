@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import hiitBg from "../../../../assets/home/experience/hiit.png";
+import { CONTACT } from "../../../config/Contact";
 
-const OWNER_WHATSAPP = "917899944483"; // PLAN B THE GYM
 
 // WEEKLY HIIT SCHEDULE
 const schedule = {
@@ -51,7 +51,7 @@ Interested in trying a HIIT session.
 `;
 
     window.open(
-      `https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(message)}`,
+      `https://wa.me/${CONTACT.WHATSAPP_OWNER}?text=${encodeURIComponent(message)}`,
       "_blank"
     );
 
@@ -62,27 +62,27 @@ Interested in trying a HIIT session.
     <>
       {/* HERO */}
       <section
-        className="relative min-h-[70vh] bg-contain bg-center flex items-center justify-center"
+        className="relative min-h-[60vh] bg-contain bg-center flex items-center justify-center"
         style={{ backgroundImage: `url(${hiitBg})` }}
       >
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-textPrimary/40" />
         <div className="relative z-10 text-center px-4">
-          <h1 className="mt-40 uppercase italic font-extrabold text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="mt-40 uppercase italic font-extrabold text-textLight text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
             HIIT Training
           </h1>
-          <p className="mt-4 text-lg sm:text-xl text-gray-200">
+          <p className="mt-4 text-lg sm:text-xl text-textLight/80">
             High-intensity workouts designed to push limits and build endurance
           </p>
         </div>
       </section>
 
       {/* MAIN */}
-      <section className="bg-white text-black py-16">
+      <section className="bg-section text-textPrimary py-16">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
 
           {/* LEFT COLUMN */}
           <div className="order-3 lg:order-1 space-y-6">
-            <div className="w-full h-64 rounded-lg overflow-hidden border">
+            <div className="w-full h-64 rounded-lg overflow-hidden border border-divider">
               <iframe
                 title="Plan B The Gym Location"
                 src="https://www.google.com/maps?q=Plan+B+The+Gym,+Kuvempu+Nagara,+Mysuru&output=embed"
@@ -104,37 +104,37 @@ Interested in trying a HIIT session.
               HIIT Classes at PLAN B THE GYM – Mysore
             </h2>
 
-            <p className="mt-4 text-lg">
+            <p className="mt-4 text-lg text-textMuted">
               Structured high-intensity interval workouts combining strength,
               cardio, and functional movement for fast, effective results.
             </p>
 
-            <p className="mt-3 text-lg text-gray-500">
+            <p className="mt-3 text-lg text-textSubtle">
               Fat loss • Strength • Endurance • Conditioning
             </p>
 
             {/* FORM */}
-            <div className="mt-10 bg-gray-200 rounded-xl p-6 sm:p-8 max-w-xl">
-              <form className="space-y-5" onSubmit={handleSubmit}>
-                <h3 className="uppercase italic text-primary font-extrabold text-3xl">
+            <div className="mt-10 bg-section border border-divider bg-base rounded-xl p-6 sm:p-8 max-w-xl">
+              <form className="space-y-3" onSubmit={handleSubmit}>
+                <h3 className="uppercase italic  font-extrabold text-3xl">
                   Try a HIIT Session
                 </h3>
 
                 <input
                   placeholder="Name *"
-                  className="w-full border px-4 py-3 rounded"
+                  className="w-full border border-divider bg-base px-4 py-3 rounded"
                   onChange={(e) => setForm({ ...form, Name: e.target.value })}
                 />
 
                 <input
                   placeholder="Mobile *"
-                  className="w-full border px-4 py-3 rounded"
+                  className="w-full border border-divider bg-base  px-4 py-3 rounded"
                   onChange={(e) => setForm({ ...form, Mobile: e.target.value })}
                 />
 
                 <input
                   placeholder="Email (Optional)"
-                  className="w-full border px-4 py-3 rounded"
+                  className="w-full border border-divider bg-base  px-4 py-3 rounded"
                   onChange={(e) => setForm({ ...form, Email: e.target.value })}
                 />
 
@@ -147,11 +147,10 @@ Interested in trying a HIIT session.
                   <button
                     type="submit"
                     disabled={submitted}
-                    className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border-2 transition
-                      ${
-                        submitted
-                          ? "bg-green-600 text-white border-green-700 cursor-not-allowed"
-                          : "bg-primary text-white border-black hover:bg-white hover:text-black"
+                    className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border transition
+                      ${submitted
+                        ? "bg-surface text-textSubtle border-divider cursor-not-allowed"
+                        : "bg-button text-textPrimary border-buttonButton hover:bg-buttoHover"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book HIIT Session"}
@@ -159,9 +158,9 @@ Interested in trying a HIIT session.
                 </div>
 
                 {submitted && (
-                  <div className="bg-green-50 border border-green-500 text-green-700 p-3 rounded-lg text-center">
+                  <div className="bg-surface border border-divider  p-3 rounded-lg text-center">
                     <p className="font-bold">Request Sent Successfully</p>
-                    <p className="text-sm">Our team will contact you shortly</p>
+                    <p className="text-sm text-textMuted">Our team will contact you shortly</p>
                   </div>
                 )}
 
@@ -175,7 +174,7 @@ Interested in trying a HIIT session.
                         scheduleRef.current?.scrollIntoView({ behavior: "smooth" });
                       }, 150);
                     }}
-                    className="inline-block px-6 py-2 text-sm bg-black text-white font-bold uppercase rounded-lg border border-black hover:bg-white hover:text-black transition"
+                    className="inline-block px-6 py-2 text-sm bg-button text-textPrimary font-bold uppercase rounded-lg border border-buttonBorder hover:bg-buttonHover  transition"
                   >
                     View Class Schedule
                   </button>
@@ -184,14 +183,14 @@ Interested in trying a HIIT session.
             </div>
           </div>
 
-          {/* FAQ – REDUCED WIDTH */}
+          {/* FAQ */}
           <div className="order-2 lg:order-3 lg:col-span-3 mt-16">
             <div className="max-w-3xl mx-auto">
               <h3 className="uppercase italic font-extrabold text-3xl mb-6 text-center">
                 Frequently Asked Questions
               </h3>
 
-              <div className="border rounded-md overflow-hidden">
+              <div className="border border-divider rounded-md overflow-hidden">
                 {[
                   [
                     "What is HIIT training?",
@@ -210,17 +209,17 @@ Interested in trying a HIIT session.
                     "2–4 sessions per week is ideal depending on recovery and goals."
                   ],
                 ].map(([q, a], i) => (
-                  <div key={i} className="border-b last:border-b-0">
+                  <div key={i} className="border-b border-divider last:border-b-0">
                     <button
                       onClick={() => setActive(active === i ? null : i)}
-                      className="w-full px-4 py-3 flex justify-between text-left font-medium hover:bg-gray-100"
+                      className="w-full px-4 py-3 flex justify-between text-left font-medium hover:bg-section"
                     >
                       {q}
                       <span>{active === i ? "−" : "+"}</span>
                     </button>
 
                     {active === i && (
-                      <div className="px-4 pb-4 text-sm text-gray-700">
+                      <div className="px-4 pb-4 text-sm text-textMuted">
                         {a}
                       </div>
                     )}
@@ -233,7 +232,7 @@ Interested in trying a HIIT session.
 
         {/* SCHEDULE BANNER */}
         {showSchedule && (
-          <div ref={scheduleRef} className="mt-24 bg-gray-100 py-16">
+          <div ref={scheduleRef} className="mt-20 bg-section py-16">
             <div className="max-w-7xl mx-auto px-4">
               <h2 className="uppercase italic font-black text-4xl mb-10 text-center">
                 Weekly HIIT Schedule
@@ -241,15 +240,15 @@ Interested in trying a HIIT session.
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {Object.entries(schedule).map(([day, classes]) => (
-                  <div key={day} className="bg-white p-4 rounded-xl shadow">
+                  <div key={day} className="bg-surface p-4 rounded-xl shadow">
                     <h3 className="font-bold text-center mb-4">{day}</h3>
 
                     {classes.map((item, i) => (
-                      <div key={i} className="border rounded-lg overflow-hidden mb-3">
-                        <div className={`${item.color} text-white px-3 py-1 text-sm font-bold`}>
+                      <div key={i} className="border border-divider rounded-lg overflow-hidden mb-3">
+                        <div className={`${item.color} text-textLight px-3 py-1 text-sm font-bold`}>
                           {item.time}
                         </div>
-                        <div className="p-3 text-sm font-semibold text-gray-800">
+                        <div className="p-3 text-sm font-semibold text-textPrimary">
                           {item.title}
                         </div>
                       </div>

@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import bodyCompositionImg from "../../assets/home/features/BCA.png";
+import {CONTACT} from "../../components/config/Contact.js";
 
-const OWNER_WHATSAPP = "917899944483"; // PLAN B THE GYM
 
 export default function BodyComposition() {
   const formRef = useRef(null);
@@ -29,7 +29,7 @@ Please contact me to confirm my appointment.
 `;
 
     window.open(
-      `https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(message)}`,
+      `https://wa.me/${CONTACT.WHATSAPP_OWNER}?text=${encodeURIComponent(message)}`,
       "_blank"
     );
 
@@ -64,22 +64,22 @@ Please contact me to confirm my appointment.
     <>
       {/* HERO */}
       <section
-        className="relative min-h-[70vh] bg-cover bg-center flex items-center justify-center"
+        className="relative min-h-[70vh] bg-contain bg-center flex items-center justify-center"
         style={{ backgroundImage: `url(${bodyCompositionImg})` }}
       >
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center px-4">
-          <h1 className="mt-40 uppercase italic font-extrabold text-white text-4xl md:text-6xl lg:text-7xl">
+          <h1 className="mt-40 uppercase italic font-extrabold text-textLight text-4xl md:text-6xl lg:text-7xl">
             Body Composition Analysis
           </h1>
-          <p className="mt-4 text-lg text-gray-200">
+          <p className="mt-4 text-lg text-textLight/70">
             Know your body. Track progress. Train smarter.
           </p>
         </div>
       </section>
 
       {/* MAIN */}
-      <section className="bg-white py-16 text-black">
+      <section className="bg-section py-16 text-textPrimary">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
 
           {/* LEFT */}
@@ -109,12 +109,12 @@ Please contact me to confirm my appointment.
               balance to guide your training and nutrition decisions.
             </p>
 
-            <p className="mt-3 text-lg text-gray-500">
+            <p className="mt-3 text-lg text-textSubtle">
               Fat % • Muscle Mass • Body Water • Progress Tracking
             </p>
 
             {/* FORM */}
-            <div className="mt-10 bg-gray-200 rounded-xl p-6 max-w-xl">
+            <div className="mt-10 bg-surface rounded-xl p-6 max-w-xl">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <h3 className="uppercase italic text-primary font-extrabold text-3xl">
                   Book Your Analysis
@@ -122,23 +122,23 @@ Please contact me to confirm my appointment.
 
                 <input
                   placeholder="Name *"
-                  className="w-full border px-4 py-3 rounded"
+                  className="w-full border border-divider bg-base px-4 py-3 rounded"
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                 />
 
                 <input
                   placeholder="Mobile *"
-                  className="w-full border px-4 py-3 rounded"
+                  className="w-full border border-divider bg-base px-4 py-3 rounded"
                   onChange={(e) => setForm({ ...form, mobile: e.target.value })}
                 />
 
                 <input
                   placeholder="Email (Optional)"
-                  className="w-full border px-4 py-3 rounded"
+                  className="w-full border border-divider bg-base px-4 py-3 rounded"
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                 />
 
-                <label className="flex gap-2 text-sm">
+                <label className="flex gap-2 text-sm text-textMuted">
                   <input type="checkbox" required />
                   Please contact me to confirm my appointment
                 </label>
@@ -147,11 +147,11 @@ Please contact me to confirm my appointment.
                   <button
                     type="submit"
                     disabled={submitted}
-                    className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border-2 transition
+                    className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border transition
                       ${
                         submitted
-                          ? "bg-green-600 text-white border-green-700 cursor-not-allowed"
-                          : "bg-primary text-white border-black hover:bg-white hover:text-black"
+                          ? "bg-green-600 text-textSubtle border-divider cursor-not-allowed"
+                          : "bg-primary text-textPrimary border-button hover:bg-buttonHover"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Analysis"}
@@ -159,9 +159,9 @@ Please contact me to confirm my appointment.
                 </div>
 
                 {submitted && (
-                  <div className="bg-green-50 border border-green-500 text-green-700 p-3 rounded-lg text-center">
+                  <div className="bg-surface border border-divider p-3 rounded-lg text-center">
                     <p className="font-bold">Request Sent Successfully</p>
-                    <p className="text-sm">Our team will contact you shortly</p>
+                    <p className="text-sm text-textMuted">Our team will contact you shortly</p>
                   </div>
                 )}
               </form>
@@ -175,19 +175,19 @@ Please contact me to confirm my appointment.
             Frequently Asked Questions
           </h3>
 
-          <div className="border rounded-md overflow-hidden">
+          <div className="border border-divider rounded-md overflow-hidden">
             {faqs.map((item, i) => (
-              <div key={i} className="border-b last:border-b-0">
+              <div key={i} className="border-b  border-divider last:border-b-0">
                 <button
                   onClick={() => setActive(active === i ? null : i)}
-                  className="w-full px-4 py-3 flex justify-between text-left font-medium hover:bg-gray-100"
+                  className="w-full px-4 py-3 flex justify-between text-left font-medium hover:bg-section"
                 >
                   {item.q}
                   <span>{active === i ? "−" : "+"}</span>
                 </button>
 
                 {active === i && (
-                  <div className="px-4 pb-4 text-sm text-gray-700">
+                  <div className="px-4 pb-4 text-sm text-textMuted">
                     {Array.isArray(item.a) ? (
                       <ul className="list-disc ml-5 space-y-1">
                         {item.a.map((li, j) => (

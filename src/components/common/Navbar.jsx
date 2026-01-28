@@ -15,9 +15,9 @@ const menuItems = [
 ];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);        // mobile menu state
+  const [open, setOpen] = useState(false);        
   const navigate = useNavigate();
-  const location = useLocation();                // current route
+  const location = useLocation();              
 
   /* Navigate + close mobile menu */
   const goTo = (path) => {
@@ -28,8 +28,8 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ================= NAVBAR ================= */}
-      <nav className="fixed top-0 w-full z-50 bg-base/80 border-b border-divider backdrop-blur">
+      {/* NAVBAR  */}
+      <nav className="fixed top-0 w-full z-50 bg-base/40 border border-divider backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-24 sm:h-28">
 
@@ -38,12 +38,12 @@ export default function Navbar() {
               <img
                 src={logo}
                 alt="Plan B The Gym"
-                className="block lg:hidden h-[56px] sm:h-[72px]"
+                className="block lg:hidden h-[56px] sm:h-[72px] brightness-40 contrast-200 transition duration-300"
               />
               <img
                 src={logoB}
                 alt="Plan B Logo"
-                className="hidden lg:block h-[112px]"
+                className="hidden lg:block h-[112px]  brightness-40 contrast-200 transition duration-300"
               />
             </div>
 

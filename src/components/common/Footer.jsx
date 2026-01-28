@@ -39,7 +39,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-base text-textPrimary">
+    <footer className="bg-section text-textPrimary">
       <div className="h-px bg-divider" />
 
       {/* MAIN CONTENT */}

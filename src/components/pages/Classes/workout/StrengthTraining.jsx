@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import strengthBg from "../../../../assets/home/experience/strength-training.jpg";
+import {CONTACT} from "../../../config/Contact";
 
-const OWNER_WHATSAPP = "917899944483"; // PLAN B THE GYM
 
 // WEEKLY STRENGTH TRAINING SCHEDULE
 const schedule = {
@@ -51,7 +51,7 @@ Interested in trying a Strength Training session.
 `;
 
     window.open(
-      `https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(message)}`,
+      `https://wa.me/${CONTACT.WHATSAPP_OWNER}?text=${encodeURIComponent(message)}`,
       "_blank"
     );
 
@@ -62,27 +62,27 @@ Interested in trying a Strength Training session.
     <>
       {/* HERO */}
       <section
-        className="relative min-h-[70vh] bg-contain bg-center flex items-center justify-center"
+        className="relative min-h-[55vh] bg-contain bg-center flex items-center justify-center"
         style={{ backgroundImage: `url(${strengthBg})` }}
       >
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-textPrimary/40" />
         <div className="relative z-10 text-center px-4">
-          <h1 className="mt-40 uppercase italic font-extrabold text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="mt-40 uppercase italic font-extrabold text-textLight text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
             Strength Training
           </h1>
-          <p className="mt-4 text-lg sm:text-xl text-gray-200">
+          <p className="mt-4 text-lg sm:text-xl text-textLight/80">
             Build muscle, improve posture, and gain real-world strength
           </p>
         </div>
       </section>
 
       {/* MAIN */}
-      <section className="bg-white text-black py-16">
+      <section className="bg-section text-textPrimary py-12">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
 
           {/* LEFT COLUMN */}
           <div className="order-3 lg:order-1 space-y-6">
-            <div className="w-full h-64 rounded-lg overflow-hidden border">
+            <div className="w-full h-64 rounded-lg overflow-hidden border boder-divider">
               <iframe
                 title="Plan B The Gym Location"
                 src="https://www.google.com/maps?q=Plan+B+The+Gym,+Kuvempu+Nagara,+Mysuru&output=embed"
@@ -94,7 +94,7 @@ Interested in trying a Strength Training session.
             <img
               src={strengthBg}
               alt="Strength training at Plan B The Gym"
-              className="w-full min-h-[45vh] object-cover rounded-lg"
+              className="w-full min-h-[50vh] object-cover rounded-lg"
             />
           </div>
 
@@ -104,38 +104,38 @@ Interested in trying a Strength Training session.
               Strength Training at PLAN B THE GYM – Mysore
             </h2>
 
-            <p className="mt-4 text-lg">
+            <p className="mt-6 text-lg  justify-center text-textMuted">
               Our strength training sessions focus on building muscle, improving
               joint stability, and developing functional strength using free
               weights, machines, and guided movement patterns.
             </p>
 
-            <p className="mt-3 text-lg text-gray-500">
+            <p className="mt-6 text-lg text-textSubtle">
               Muscle growth • Fat loss • Injury prevention • Better posture
             </p>
 
             {/* FORM */}
-            <div className="mt-10 bg-gray-200 rounded-xl p-6 sm:p-8 max-w-xl">
-              <form className="space-y-5" onSubmit={handleSubmit}>
-                <h3 className="uppercase italic text-primary font-extrabold text-3xl">
+            <div className="mt-10 bg-section border border-divider rounded-xl p-6 sm:p-8 max-w-xl">
+              <form className="space-y-3" onSubmit={handleSubmit}>
+                <h3 className="uppercase italic  font-extrabold text-3xl">
                   Try a Strength Session
                 </h3>
 
                 <input
                   placeholder="Name *"
-                  className="w-full border px-4 py-3 rounded"
+                  className="w-full border boder-divider bg-base px-4 py-3 rounded"
                   onChange={(e) => setForm({ ...form, Name: e.target.value })}
                 />
 
                 <input
                   placeholder="Mobile *"
-                  className="w-full border px-4 py-3 rounded"
+                  className="w-full border boder-divider bg-base  px-4 py-3 rounded"
                   onChange={(e) => setForm({ ...form, Mobile: e.target.value })}
                 />
 
                 <input
                   placeholder="Email (Optional)"
-                  className="w-full border px-4 py-3 rounded"
+                  className="w-full border boder-divider bg-base  px-4 py-3 rounded"
                   onChange={(e) => setForm({ ...form, Email: e.target.value })}
                 />
 
@@ -152,8 +152,8 @@ Interested in trying a Strength Training session.
                     className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border-2 transition
                       ${
                         submitted
-                          ? "bg-green-600 text-white border-green-700 cursor-not-allowed"
-                          : "bg-primary text-white border-black hover:bg-white hover:text-black"
+                          ? "bg-surface text-textSubtle border boder-divider cursor-not-allowed"
+                          : "bg-button text-textPrimary border-buttonBorder hover:bg-buttonHover"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Strength Session"}
@@ -167,16 +167,16 @@ Interested in trying a Strength Training session.
                         scheduleRef.current?.scrollIntoView({ behavior: "smooth" });
                       }, 150);
                     }}
-                    className="inline-block px-6 py-2 text-sm text-center bg-black text-white font-bold uppercase rounded-lg border border-black hover:bg-white hover:text-black transition"
+                    className="inline-block px-6 py-2 text-sm bg-button text-textPrimary font-bold uppercase rounded-lg border border-buttonBorder hover:bg-buttonHover  transition"
                   >
                     View Class Schedule
                   </button>
                 </div>
 
                 {submitted && (
-                  <div className="bg-green-50 border border-green-500 text-green-700 p-3 rounded-lg text-center">
+                  <div className="bg-surface border border-divider p-3 rounded-lg text-center">
                     <p className="font-bold">Request Sent Successfully</p>
-                    <p className="text-sm">Our team will contact you shortly</p>
+                    <p className="text-sm text-textMuted">Our team will contact you shortly</p>
                   </div>
                 )}
               </form>
@@ -184,13 +184,13 @@ Interested in trying a Strength Training session.
           </div>
 
           {/* FAQ – REDUCED WIDTH */}
-          <div className="order-2 lg:order-3 lg:col-span-3 mt-16">
+          <div className="order-2 lg:order-3 lg:col-span-3 mt-10:">
             <div className="max-w-3xl mx-auto">
               <h3 className="uppercase italic font-extrabold text-3xl mb-6 text-center">
                 Frequently Asked Questions
               </h3>
 
-              <div className="border rounded-md overflow-hidden">
+              <div className="border border-divider rounded-md overflow-hidden">
                 {[
                   [
                     "What is strength training?",
@@ -209,17 +209,17 @@ Interested in trying a Strength Training session.
                     "2–4 sessions per week works well depending on your fitness goals."
                   ],
                 ].map(([q, a], i) => (
-                  <div key={i} className="border-b last:border-b-0">
+                  <div key={i} className="border-b border-divider last:border-b-0">
                     <button
                       onClick={() => setActive(active === i ? null : i)}
-                      className="w-full px-4 py-3 flex justify-between text-left font-medium hover:bg-gray-100"
+                      className="w-full px-4 py-3 flex justify-between text-left font-medium hover:bg-section"
                     >
                       {q}
                       <span>{active === i ? "−" : "+"}</span>
                     </button>
 
                     {active === i && (
-                      <div className="px-4 pb-4 text-sm text-gray-700">
+                      <div className="px-4 pb-4 text-sm text-textMuted">
                         {a}
                       </div>
                     )}
@@ -232,23 +232,23 @@ Interested in trying a Strength Training session.
 
         {/* SCHEDULE BANNER */}
         {showSchedule && (
-          <div ref={scheduleRef} className="mt-24 bg-gray-100 py-16">
+          <div ref={scheduleRef} className="mt-16 bg-section py-16">
             <div className="max-w-7xl mx-auto px-4">
-              <h2 className="uppercase italic font-black text-4xl mb-10 text-center">
+              <h2 className="uppercase italic font-bold  text-4xl mb-10 text-center">
                 Weekly Strength Training Schedule
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {Object.entries(schedule).map(([day, classes]) => (
-                  <div key={day} className="bg-white rounded-xl p-4 shadow">
+                  <div key={day} className="bg-base rounded-xl p-4 shadow">
                     <h3 className="font-bold text-lg mb-4 text-center">{day}</h3>
 
                     {classes.map((item, i) => (
                       <div key={i} className="border rounded-lg overflow-hidden mb-3">
-                        <div className={`${item.color} text-white px-3 py-1 text-sm font-bold`}>
+                        <div className={`${item.color} text-textLight px-3 py-1 text-sm font-bold`}>
                           {item.time}
                         </div>
-                        <div className="p-3 text-sm font-semibold text-gray-800">
+                        <div className="p-3 text-sm font-semibold text-textprimary">
                           {item.title}
                         </div>
                       </div>

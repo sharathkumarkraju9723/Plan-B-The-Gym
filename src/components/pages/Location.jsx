@@ -2,15 +2,15 @@ import GymHero from "../../assets/images/PlanB-gym.png";
 
 export default function PlanBGym() {
   return (
-    <div className="bg-white text-black">
+    <div className="bg-section text-textPrimary">
 
       {/* HERO */}
       <section
         className="relative h-[55vh] bg-cover bg-center flex items-center justify-center"
         style={{ backgroundImage: `url(${GymHero})` }}
       >
-        <div className="absolute inset-0 bg-black/40" />
-        <h1 className="relative text-white text-4xl sm:text-5xl font-extrabold uppercase italic">
+        <div className="absolute inset-0 bg-textPrimary/40" />
+        <h1 className="relative text-textLight text-4xl sm:text-5xl font-extrabold uppercase italic">
           Location
         </h1>
       </section>
@@ -26,28 +26,29 @@ export default function PlanBGym() {
                 Plan B The Gym
               </h2>
 
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-textMuted">
                 2nd Floor, 557/A, New Kantharaj Urs Road,<br />
                 Near Sri S Nijalingappa Circle,<br />
                 Kuvempu Nagara, Mysuru – 570023
               </p>
 
               <p>
-                <strong>Phone:</strong> +91 98765 43210
+                <strong>Phone:</strong > {" "}
+                <span className="textMuted"> +91 98765 43210</span> 
               </p>
 
               <div>
                 <p className="font-bold mb-1">Business Hours</p>
                 <ul className="list-disc ml-5 space-y-1">
-                  <li>Monday – Saturday: 6:00 AM – 10:00 PM</li>
-                  <li>Sunday: 6:00 AM – 8:00 PM</li>
+                  <li>Monday – Saturday: 6:00 AM – 12:00 PM</li>
+                  <li>Sunday: 6:00 AM – 9:30 PM</li>
                 </ul>
               </div>
             </div>
           </div>
 
           {/* MAP */}
-          <div className="order-1 lg:order-2 h-[300px] sm:h-[360px] lg:h-[420px] border rounded-lg overflow-hidden">
+          <div className="order-1 lg:order-2 h-[300px] sm:h-[360px] lg:h-[420px] border border-divider rounded-lg overflow-hidden">
             <iframe
               title="Plan B The Gym Location"
               src="https://www.google.com/maps?q=Plan+B+The+Gym,+Kuvempu+Nagara,+Mysuru&output=embed"

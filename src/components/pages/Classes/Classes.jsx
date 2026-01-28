@@ -51,7 +51,7 @@ export default function WorkoutsPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[60vh] flex items-center justify-center">
+      <section className="relative min-h-[60vh] bg-contain bg-center flex items-center justify-center bg-section">
         <img
           src={classbg}
           alt="Workouts at PLAN B THE GYM"
@@ -59,19 +59,19 @@ export default function WorkoutsPage() {
         />
         <div className="absolute inset-0 bg-black/50" />
 
-        <div className="relative z-10 text-center px-4">
-          <h1 className="uppercase italic font-black text-white text-5xl md:text-7xl">
+        <div className="relative z-5 text-center px-2">
+          <h1 className="mt-28 uppercase italic font-bold text-textLight text-4xl md:text-6xl">
             PLAN B TRAINING PROGRAMS
           </h1>
-          <p className="mt-4 text-lg text-gray-200">
-            Group fitness programs designed to build strength, endurance, and confidence at PLAN B THE GYM, Mysore
+          <p className="mt-3 text-lg  justify-center text-textLight/80">
+            Group fitness programs designed to build strength, endurance, <br /> and confidence at PLAN B THE GYM, Mysore
           </p>
         </div>
       </section>
 
       {/* WORKOUT GRID */}
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <section className="bg-section py-20">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {workouts.map((w, i) => (
             <a
               key={i}
@@ -84,14 +84,14 @@ export default function WorkoutsPage() {
                   alt={w.title}
                   className="w-full h-[200px] object-cover"
                 />
-                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition" />
+                <div className="absolute inset-0 bg-textPrimary/30 opacity-0 group-hover:opacity-100 transition" />
               </div>
 
-              <div className="p-6 bg-white">
-                <h3 className="text-xl font-bold text-primary mb-2  transition">
+              <div className="p-6 bg-surface">
+                <h3 className="text-xl font-bold text-textPrimary mb-2  transition">
                   {w.title}
                 </h3>
-                <p className="text-sm text-gray-600">{w.desc}</p>
+                <p className="text-sm text-textSubtle">{w.desc}</p>
               </div>
             </a>
           ))}

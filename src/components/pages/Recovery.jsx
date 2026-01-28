@@ -58,7 +58,7 @@ Interested in booking a recovery session.
       </section>
 
       {/* MAIN */}
-      <section className="bg-base py-16 text-textPrimary">
+      <section className="bg-section py-16 text-textPrimary">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
 
           {/* LEFT – MAP + IMAGE */}
