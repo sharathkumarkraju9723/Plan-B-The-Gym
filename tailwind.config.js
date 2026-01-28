@@ -20,7 +20,7 @@ export default {
         /* TEXT */
         textPrimary: "#000000",   // dark black
         textMuted: "#bebebe",     // dark gray
-        textSubtle: "#c1bfbff8",    // medium gray
+        textSubtle: "#f5f4f4",    // medium gray
         textLight: "#FFFFFF",     // text on images
 
         /* UI */
