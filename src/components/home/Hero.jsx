@@ -9,19 +9,19 @@ export default function Hero() {
     <>
       {/* HERO */}
       <section
-        className="relative w-full min-h-[70vh]  bg-center bg-contain flex items-center justify-center bg-section"
+        className="relative w-full min-h-[60vh]   bg-center bg-contain flex items-center justify-center bg-section"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-black/80" />
 
         {/* CONTENT */}
-        <div className="relative z-10 text-center px-4">
-          <h1 className="uppercase italic font-extrabold tracking-tight text-textLight text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+        <div className="relative z-10 mt-28 text-center px-4">
+          <h1 className="uppercase italic font-extrabold tracking-tight text-textLight text-4xl sm:text-5xl md:text-5xl lg:text-5xl">
             Your <span className="text-textLight">Second</span> Chance
           </h1>
 
-          <p className="mt-4 text-textLight/80 text-sm font-bold sm:text-xl">
+          <p className="mt-4 text-textSubtle/80 text-sm  sm:text-lg">
             PLAN B THE GYM – MYSORE <br />
             Train Strong. Feel Confident. Live Healthy.
           </p>

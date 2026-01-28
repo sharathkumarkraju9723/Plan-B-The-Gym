@@ -12,7 +12,7 @@ const features = [
 
 export default function BestExperience() {
   return (
-    <section className="py-4 bg-section sm:py-16 lg:py-10">
+    <section className="bg-section pt-12 pb-4 sm:pt-16 sm:pb-6 lg:pt-20 lg:pb-6">
       <div className=" max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
         <p className="text-xs sm:text-sm uppercase tracking-widest text-textSubtle mb-2">

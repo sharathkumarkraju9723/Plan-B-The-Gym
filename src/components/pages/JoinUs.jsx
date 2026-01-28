@@ -88,7 +88,7 @@ Please contact me with membership details.
             </p>
 
             {/* FORM */}
-            <div className="mt-10 bg-suerface border  border-divider rounded-xl p-6 max-w-xl">
+            <div className="mt-10 bg-section border  border-divider rounded-xl p-6 max-w-xl">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <h3 className="uppercase italic font-extrabold text-3xl">
                   Enquire About Membership

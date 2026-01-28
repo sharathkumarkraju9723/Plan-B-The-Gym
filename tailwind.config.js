@@ -9,7 +9,7 @@ export default {
       colors: {
         /* BACKGROUNDS */
         base: "#F5F5F5",          // app background
-        section: "#838181",       // section background (light blackish)
+        section: "#42424274",       // section background (light blackish)
         surface: "#EFEFEF",       // forms / cards (light blackish)
 
         /* BUTTONS */
@@ -20,7 +20,7 @@ export default {
         /* TEXT */
         textPrimary: "#000000",   // dark black
         textMuted: "#bebebe",     // dark gray
-        textSubtle: "#d7d7d7f8",    // medium gray
+        textSubtle: "#c1bfbff8",    // medium gray
         textLight: "#FFFFFF",     // text on images
 
         /* UI */

@@ -104,7 +104,7 @@ export default function Navbar() {
                 onClick={() => goTo(item.path)}
                 className={`
                   cursor-pointer transition
-                  ${active ? "text-textPrimary font-semibold" : "text-textMuted hover:text-textPrimary"}
+                  ${active ? "text-textPrimary font-semibold" : "text-textPrimary hover:text-textMuted"}
                 `}
               >
                 {item.label}

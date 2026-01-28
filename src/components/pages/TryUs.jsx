@@ -92,7 +92,7 @@ Interested in trying the gym with a free guest pass.
             </p>
 
             {/* FORM */}
-            <div className="mt-10 bg-surface border border-divider rounded-xl p-6 max-w-xl">
+            <div className="mt-10 bg-section/50 border border-divider rounded-xl p-6 max-w-xl">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <h3 className="uppercase italic  font-extrabold text-3xl">
                   Claim Your Free Guest Pass

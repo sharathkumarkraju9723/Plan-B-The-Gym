@@ -37,10 +37,10 @@ https://chat.whatsapp.com/JsfMMkSXt3g0aecEOnTBCb`;
   };
 
   return (
-    <section className="py-14 bg-gradient-to-r from-white to-gray-300">
+    <section className="py-16 bg-gradient-to-br from-section/10 via-surface/30 to-base/10">
       <div className="max-w-3xl mx-auto  text-textPrimary px-6 text-center">
 
-        <p className="uppercase text-sm tracking-widest text-textSubtle mb-2">
+        <p className="uppercase text-sm font-semibold tracking-widest text-textPrimary mb-2">
           Stronger together, better together
         </p>
 
@@ -48,13 +48,13 @@ https://chat.whatsapp.com/JsfMMkSXt3g0aecEOnTBCb`;
           Bring a Friend. Train Together.
         </h2>
 
-        <p className="text-textMuted text-base mb-6">
+        <p className="text-textPrimary  mb-6">
           Invite your friend to experience PLAN B THE GYM.
           Send them a WhatsApp invite and grow stronger together.
         </p>
 
         {/* Inputs */}
-        <div className="space-y-3 text-left">
+        <div className="space-y-3 text-left text-textPrimary">
           {[
             ["Your Full Name", "yourName"],
             ["Your Mobile Number", "yourMobile"],
@@ -64,7 +64,7 @@ https://chat.whatsapp.com/JsfMMkSXt3g0aecEOnTBCb`;
           ].map(([placeholder, key]) => (
             <input
               key={key}
-              className="w-full border border-divider bg-surface px-4 py-2.5 text-textPrimary placeholder-textSubtle focus:outline-none focus:border-buttonHover"
+              className="w-full border border-divider bg-textSubtle px-4 py-2.5 text-textPrimary placeholder-textPrimary text-sm hover:border-buttonHover"
               placeholder={placeholder}
               value={form[key]}
               onChange={(e) =>

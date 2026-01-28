@@ -60,7 +60,7 @@ export default function Footer() {
 
             <p
               onClick={() => goTo("/location")}
-              className="text-sm text-textSubtle leading-relaxed cursor-pointer hover:text-textPrimary"
+              className="text-sm text-textPrimary leading-relaxed cursor-pointer hover:text-textSubtle"
             >
               2nd Floor, 557/A, New Kantharaj Urs Rd,<br />
               Near Sri S Nijalingappa Circle,<br />
@@ -69,14 +69,14 @@ export default function Footer() {
 
             <p className="text-sm">
               <strong>Phone:</strong>{" "}
-              <a href="tel:+919876543210" className="hover:underline">
+              <a href="tel:+919876543210" className="hover:underline hover:text-textSubtle">
                 +91 98765 43210
               </a>
             </p>
 
             <p className="text-sm">
               <strong>Email:</strong>{" "}
-              <a href="mailto:info@planbthegym.com" className="hover:underline">
+              <a href="mailto:info@planbthegym.com" className="hover:underline  hover:text-textSubtle ">
                 info@planbthegym.com
               </a>
             </p>
@@ -110,8 +110,8 @@ export default function Footer() {
                 key={path}
                 onClick={() => goTo(path)}
                 className={`cursor-pointer w-fit transition ${pathname === path
-                  ? "text-textPrimary font-medium"
-                  : "text-textSubtle hover:text-textPrimary"
+                  ? "text-textPrimary font-sm"
+                  : "text-textPeimary hover:text-textSubtle"
                   }`}
               >
                 {label}
@@ -140,10 +140,10 @@ export default function Footer() {
       </div>
 
       {/* BOTTOM BAR */}
-      <div className="border-t border-divider py-4 text-xs flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto px-6 text-textSubtle">
+      <div className="border-t border-divider py-4 text-xs flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto px-6 text-textPrimary">
         <p>© 2026 PLAN B THE GYM. All Rights Reserved.</p>
         <p>
-          Developed by <span className="text-textPrimary">Envision Tech Sol</span>
+          Developed by <span className="text-textSubtle/100">Envision Tech Sol</span>
         </p>
       </div>
     </footer>

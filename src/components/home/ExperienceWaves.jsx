@@ -28,8 +28,8 @@ export default function ExperienceWaves() {
   return (
     <>
       {/* section bg comes from global styles */}
-      <section className="py-16 mb-10 bg-section">
-        <div className="max-w-7xl mx-auto px-4 text-center">
+      <section className="bg-section pt-16 pb-6">
+        <div className="max-w-5xl mx-auto px-4 text-center">
 
           <h2 className="text-3xl uppercase italic font-extrabold text-textPrimary mb-2">
             Experience PLAN B THE GYM
