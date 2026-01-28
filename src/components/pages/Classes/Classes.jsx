@@ -84,7 +84,7 @@ export default function WorkoutsPage() {
                   alt={w.title}
                   className="w-full h-[200px] object-cover"
                 />
-                <div className="absolute inset-0 bg-textPrimary/30 opacity-0 group-hover:opacity-100 transition" />
+                <div className="absolute inset-0 bg-textPrimary opacity-0 group-hover:opacity-100 transition" />
               </div>
 
               <div className="p-6 bg-surface">
