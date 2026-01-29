@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import GroupScheduleModal from "../forms/GroupSchedule";
 import TryFreeClass from "../forms/TryFreeClass";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,6 +23,7 @@ const images = [
 ];
 
 export default function ExperienceWaves() {
+  const navigate = useNavigate();
   const [showSchedule, setShowSchedule] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
@@ -91,7 +93,7 @@ export default function ExperienceWaves() {
 
             <button className="mt-4 sm:w-auto bg-button px-6 py-3  border-buttonBorder text-textPrimary uppercase font-bold rounded-xl transition-all duration-300 hover:bg-buttonHover  hover:text-textPrimary hover:scale-105 active:bg-white  active:scale-95"
               type="button"
-              onClick={() => setShowForm(true)}
+              onClick={() => navigate("/classes")}
             >
               Try a Free Group Class
             </button>

@@ -12,10 +12,10 @@ const features = [
 
 export default function BestExperience() {
   return (
-    <section className="bg-section pt-10 pb-4 sm:pt-16 sm:pb-6 lg:pt-20 lg:pb-6">
+    <section className="bg-section pt-12 pb-4 sm:pt-16 sm:pb-6 lg:pt-20 lg:pb-6">
       <div className=" max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
-        <p className="text-4xl font-bold sm:text-sm uppercase tracking-widest text-textSubtle/100 mb-2">
+        <p className="text-xl font-bold sm:text-sm uppercase tracking-widest text-textLight mb-2">
           Professinal trainers. Modern equipments. Real Results.
         </p>
 
@@ -23,7 +23,7 @@ export default function BestExperience() {
           The PLAN B Fitness Experience
         </h2>
 
-        <p className="text-sm sm:text-base lg:text-lg text-textMuted max-w-2xl mx-auto mb-12">
+        <p className="text-sm sm:text-base lg:text-lg text-textLight max-w-2xl mx-auto mb-12">
           Everything at{" "}
           <span className="text-textPrimary font-bold">
             PLAN B THE GYM

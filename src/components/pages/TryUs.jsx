@@ -1,14 +1,15 @@
 import { useRef, useState } from "react";
 import tryBg from "../../assets/images/tryus.jpg";
 import { CONTACT } from "../../components/config/Contact";
-
+import { useToast } from "../../hooks/useToast";
 
 export default function TryUs() {
   const formRef = useRef(null);
-  const scheduleRef = useRef(null);
+  const { showToast } = useToast();
 
   const [active, setActive] = useState(null);
   const [submitted, setSubmitted] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   const [form, setForm] = useState({
     Name: "",
@@ -18,7 +19,12 @@ export default function TryUs() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.Name || !form.Mobile || submitted) return;
+
+    // ❗ STRICT VALIDATION
+    if (!form.Name || !form.Mobile || !agreed || submitted) {
+      showToast("Please fill all required fields and accept the checkbox.");
+      return;
+    }
 
     const message = `
 FREE GUEST PASS REQUEST – PLAN B THE GYM
@@ -31,11 +37,16 @@ Interested in trying the gym with a free guest pass.
 `;
 
     window.open(
-      `https://wa.me/${CONTACT.WHATSAPP_OWNER}?text=${encodeURIComponent(message)}`,
+      `https://wa.me/${CONTACT.WHATSAPP_OWNER}?text=${encodeURIComponent(
+        message
+      )}`,
       "_blank"
     );
 
     setSubmitted(true);
+
+    // ✅ BLACK SUCCESS TOAST
+    showToast("✓ Request Sent Successfully! We’ll contact you shortly.");
   };
 
   return (
@@ -65,7 +76,7 @@ Interested in trying the gym with a free guest pass.
             <iframe
               title="Plan B The Gym Location"
               src="https://www.google.com/maps?q=Plan+B+The+Gym,+Kuvempu+Nagara,+Mysuru&output=embed"
-              className="w-full h-64 rounded border boder-divider"
+              className="w-full h-64 rounded border border-divider"
               loading="lazy"
             />
 
@@ -76,25 +87,15 @@ Interested in trying the gym with a free guest pass.
             />
           </div>
 
-          {/* CENTER – CONTENT + FORM */}
+          {/* FORM */}
           <div ref={formRef} className="order-1 lg:order-2 lg:col-span-2">
             <h2 className="uppercase italic font-extrabold text-3xl md:text-5xl">
               Free Guest Pass at PLAN B THE GYM – Mysore
             </h2>
 
-            <p className="mt-4 text-lg text-textMuted">
-              Get a firsthand experience of our gym environment, equipment,
-              trainers, and group training culture.
-            </p>
-
-            <p className="mt-3 text-lg text-textSubtle">
-              Strength • Cardio • Group Classes • Guidance
-            </p>
-
-            {/* FORM */}
             <div className="mt-10 bg-section/50 border border-divider rounded-xl p-6 max-w-xl">
               <form onSubmit={handleSubmit} className="space-y-5">
-                <h3 className="uppercase italic  font-extrabold text-3xl">
+                <h3 className="uppercase italic font-extrabold text-3xl">
                   Claim Your Free Guest Pass
                 </h3>
 
@@ -122,8 +123,13 @@ Interested in trying the gym with a free guest pass.
                   }
                 />
 
-                <label className="flex gap-2 text-sm text-textMuted">
-                  <input type="checkbox" />
+                <label className="flex gap-2 text-sm text-textMuted items-center">
+                  <input
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    className="accent-black"
+                  />
                   I want to try PLAN B THE GYM with a free guest pass
                 </label>
 
@@ -133,72 +139,15 @@ Interested in trying the gym with a free guest pass.
                     disabled={submitted}
                     className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border transition
                       ${submitted
-                        ? "bg-surface text-textSubtle border-divider cursor-not-allowed"
-                        : "bg-button text-textprimary border-buttonBorder hover:bg-buttonHover"
+                        ? "bg-black text-white border-divider cursor-not-allowed"
+                        : "bg-button text-textPrimary border-buttonBorder hover:bg-buttonHover"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Free Guest Pass"}
                   </button>
                 </div>
-
-                {submitted && (
-                  <div className="bg-surface border border-divider  p-3 rounded-lg text-center">
-                    <p className="font-bold">Request Sent Successfully</p>
-                    <p className="text-sm text-textMuted">
-                      Our team will contact you shortly
-                    </p>
-                  </div>
-                )}
               </form>
             </div>
-          </div>
-        </div>
-
-        {/* FAQ – SAME AS YOGA PAGE WIDTH */}
-        <div className="mt-20 max-w-3xl mx-auto px-4">
-          <h3 className="uppercase italic font-extrabold text-3xl mb-6 text-center">
-            Frequently Asked Questions
-          </h3>
-
-          <div className="border border-divider rounded-md overflow-hidden">
-            {[
-              [
-                "What is the Free Guest Pass?",
-                "It allows you to experience the gym for one day before joining."
-              ],
-              [
-                "Can I try group classes?",
-                "Yes, based on class schedule and availability."
-              ],
-              [
-                "Is the guest pass really free?",
-                "Yes, there is no cost for the trial visit."
-              ],
-              [
-                "Do I need to book in advance?",
-                "Yes, our team will schedule your visit after enquiry."
-              ],
-              [
-                "What are gym timings?",
-                "Monday–Saturday: 6 AM – 10 PM | Sunday: 6 AM – 8 PM"
-              ],
-            ].map(([q, a], i) => (
-              <div key={i} className="border-b borderdivider  last:border-b-0">
-                <button
-                  onClick={() => setActive(active === i ? null : i)}
-                  className="w-full px-4 py-3 flex justify-between text-left font-medium hover:bg-base"
-                >
-                  {q}
-                  <span>{active === i ? "−" : "+"}</span>
-                </button>
-
-                {active === i && (
-                  <div className="px-4 pb-4 text-sm text-textMuted">
-                    {a}
-                  </div>
-                )}
-              </div>
-            ))}
           </div>
         </div>
       </section>
