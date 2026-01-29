@@ -75,7 +75,7 @@ Interested in trying a Tabata session.
       </section>
 
       {/* MAIN */}
-      <section className="bg-base text-textPrimary py-16">
+      <section className="bg-section text-textPrimary py-16">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
 
           {/* LEFT */}
@@ -112,7 +112,7 @@ Interested in trying a Tabata session.
             </p>
 
             {/* FORM */}
-            <div className="mt-10 bg-surface border border-divider rounded-xl p-6 sm:p-8 max-w-xl">
+            <div className="mt-10 bg-section border border-divider rounded-xl p-6 sm:p-8 max-w-xl">
               <form className="space-y-3" onSubmit={handleSubmit}>
                 <h3 className="uppercase italic font-extrabold text-3xl">
                   Try a Tabata Session

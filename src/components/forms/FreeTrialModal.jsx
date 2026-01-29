@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-const OWNER_WHATSAPP = "917899944483"; // PLAN B THE GYM
+import { CONTACT } from "../config/Contact";
 
 export default function StartFreeTrial({ isOpen, onClose }) {
   if (!isOpen) return null;
@@ -33,7 +32,7 @@ Please schedule my free trial.
 `;
 
     window.open(
-      `https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(msg)}`,
+      `https://wa.me/${CONTACT.WHATSAPP_OWNER}?text=${encodeURIComponent(msg)}`,
       "_blank"
     );
 
@@ -49,23 +48,23 @@ Please schedule my free trial.
       />
 
       {/* MODAL */}
-      <div className="relative bg-[#f6f4ef] w-full max-w-xl mx-4 p-8 rounded-2xl shadow-2xl z-50">
+      <div className="relative bg-surface border border-divider w-full max-w-xl mx-4 p-6 rounded-xl z-50">
         {/* CLOSE */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-xl font-bold text-gray-600 hover:text-black"
+          className="absolute top-4 right-4 text-xl font-bold text-textPrimary  bg-transparent"
         >
           ✕
         </button>
 
         {/* HEADER */}
-        <h2 className="text-3xl font-extrabold uppercase italic text-[#1f1f1f] mb-2">
+        <h2 className="text-3xl font-extrabold uppercase italic text-textPrimary mb-2">
           Start Your Free Trial
         </h2>
 
-        <p className="text-sm text-[#6b6b6b] mb-6">
+        <p className="text-sm text-textMuted mb-6">
           Experience training your way at{" "}
-          <span className="font-semibold text-[#1f1f1f]">
+          <span className="font-semibold text-TextPrimary">
             PLAN B THE GYM
           </span>.
         </p>
@@ -75,7 +74,7 @@ Please schedule my free trial.
           <input
             placeholder="Full Name *"
             required
-            className="w-full h-[52px] border border-[#cfcac2] px-4 rounded-lg bg-white"
+            className="w-full border border-divider bg-base px-4 py-3 rounded text-textPrimary"
             onChange={update("name")}
           />
 
@@ -83,14 +82,14 @@ Please schedule my free trial.
             type="tel"
             placeholder="Mobile Number *"
             required
-            className="w-full h-[52px] border border-[#cfcac2] px-4 rounded-lg bg-white"
+            className="w-full border border-divider bg-base px-4 py-3 rounded text-textPrimary"
             onChange={update("mobile")}
           />
 
           <input
             type="email"
             placeholder="Email (Optional)"
-            className="w-full h-[52px] border border-[#cfcac2] px-4 rounded-lg bg-white"
+            className="w-full border border-divider bg-base px-4 py-3 rounded text-textPrimary"
             onChange={update("email")}
           />
 
@@ -99,7 +98,7 @@ Please schedule my free trial.
             <select
               required
               onChange={update("service")}
-              className="w-full h-[52px] appearance-none border border-[#cfcac2] rounded-lg px-4 pr-12 bg-white text-[#1f1f1f]"
+              className="w-full h-[52px] appearance-none border border-divider rounded-lg px-4 pr-12 bg-base text-textPrimary"
             >
               <option value="">Select a Service *</option>
               <option>Strength Training</option>
@@ -121,7 +120,7 @@ Please schedule my free trial.
           </div>
 
           {/* CONSENT */}
-          <label className="flex items-center gap-2 text-sm text-[#6b6b6b]">
+          <label className="flex items-center gap-2 text-sm text-textPrimary]">
             <input type="checkbox" required />
             I agree to be contacted by PLAN B THE GYM
           </label>
@@ -129,7 +128,7 @@ Please schedule my free trial.
           {/* CTA */}
           <button
             type="submit"
-            className="w-full mt-6 bg-[#2a2a2a] text-white py-3 rounded-xl font-bold uppercase border border-[#2a2a2a] transition hover:bg-[#f6f4ef] hover:text-[#2a2a2a] hover:scale-[1.02]"
+            className="w-full mt-4 bg-button text-textPrimary py-3 rounded-xl font-bold uppercase border border-buttonBorder transition hover:bg-buttonHover"
           >
             Claim Free Trial
           </button>

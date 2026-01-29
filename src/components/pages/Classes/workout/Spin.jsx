@@ -117,7 +117,7 @@ Interested in trying a Spin Training session.
                         </p>
 
                         {/* FORM */}
-                        <div className="mt-10 bg-surface border border-divider rounded-xl p-6 sm:p-8 max-w-xl">
+                        <div className="mt-10 bg-section border border-divider rounded-xl p-6 sm:p-8 max-w-xl">
                             <form className="space-y-3" onSubmit={handleSubmit}>
                                 <h3 className="uppercase italic  font-extrabold text-3xl">
                                     Try a Spin Session

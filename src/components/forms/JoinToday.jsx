@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-const OWNER_WHATSAPP = "917899944483";
+import { CONTACT } from "../config/Contact";
 
 export default function JoinToday({ isOpen, onClose }) {
     if (!isOpen) return null;
@@ -22,39 +21,41 @@ export default function JoinToday({ isOpen, onClose }) {
         if (!name || !mobile || !plan) return;
 
         const msg = `
-        MEMBERSHIP ENQUIRY – PLAN B THE GYM
+MEMBERSHIP ENQUIRY – PLAN B THE GYM
 
-        Name: ${name}
-        Mobile: ${mobile}
-        Email: ${email || "Not Provided"}
-        Plan: ${plan}
-        Start Date: ${date || "Flexible"}
-        `;
+Name: ${name}
+Mobile: ${mobile}
+Email: ${email || "Not Provided"}
+Plan: ${plan}
+Start Date: ${date || "Flexible"}
+`;
 
         window.open(
-            `https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(msg)}`,
+            `https://wa.me/${CONTACT.WHATSAPP_OWNER}?text=${encodeURIComponent(msg)}`,
             "_blank"
         );
         onClose();
     };
 
     return (
-        <div className="fixed text-black inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center text-textPrimary">
+            {/* backdrop */}
             <div className="absolute inset-0 bg-black/70" onClick={onClose} />
 
-            <div className="relative bg-[#f6f4ef] w-full max-w-xl mx-4 p-8 rounded-2xl shadow-2xl">
+            {/* modal */}
+            <div className="relative bg-surface w-full max-w-xl mx-4 p-8 rounded-2xl border border-divider">
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 text-xl font-bold text-gray-600"
+                    className="absolute top-4 right-4 text-xl font-bold text-textPrimary bg-transparent"
                 >
                     ✕
                 </button>
 
-                <h2 className="text-3xl font-extrabold italic uppercase text-[#1f1f1f]">
+                <h2 className="text-3xl font-extrabold italic uppercase text-textPrimary">
                     Join Plan B The Gym
                 </h2>
 
-                <p className="text-sm text-[#6b6b6b] mb-6">
+                <p className="text-sm text-textMuted mb-6">
                     Confirm your membership with a quick call from our team.
                 </p>
 
@@ -69,16 +70,16 @@ export default function JoinToday({ isOpen, onClose }) {
                             placeholder={p}
                             required={k !== "email"}
                             type={k === "email" ? "email" : "text"}
-                            className="w-full h-[52px] border border-[#cfcac2] px-4 rounded-lg bg-white"
+                            className="w-full h-[52px] border border-divider px-4 rounded-lg bg-base text-textPrimary"
                             onChange={onChange(k)}
                         />
                     ))}
 
-                    <div className="relative text-black">
+                    <div className="relative">
                         <select
                             required
                             onChange={onChange("plan")}
-                            className="w-full h-[52px] appearance-none border border-[#cfcac2] rounded-lg px-4 pr-12 bg-white"
+                            className="w-full h-[52px] appearance-none border border-divider rounded-lg px-4 pr-12 bg-base text-textPrimary"
                         >
                             <option value="">Membership Plan *</option>
                             <option>Monthly</option>
@@ -87,8 +88,9 @@ export default function JoinToday({ isOpen, onClose }) {
                             <option>Annual</option>
                             <option>Student / Couple</option>
                         </select>
+
                         <svg
-                            className="absolute text-black right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600 pointer-events-none"
+                            className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-textPrimary pointer-events-none"
                             fill="none"
                             stroke="currentColor"
                             strokeWidth="2"
@@ -101,17 +103,17 @@ export default function JoinToday({ isOpen, onClose }) {
                     <input
                         type="date"
                         onChange={onChange("date")}
-                        className="w-full h-[52px] border text-black border-[#cfcac2] px-4 rounded-lg bg-white"
+                        className="w-full h-[52px] border border-divider px-4 rounded-lg bg-base text-textPrimary"
                     />
 
-                    <label className="flex items-center gap-2 text-black text-sm text-[#6b6b6b]">
+                    <label className="flex items-center gap-2 text-sm text-textMuted">
                         <input type="checkbox" required />
                         I agree to be contacted
                     </label>
 
                     <button
                         type="submit"
-                        className="w-full mt-4 bg-[#2a2a2a] text-white py-3 rounded-xl font-bold uppercase border border-[#2a2a2a] hover:bg-[#f6f4ef] hover:text-[#2a2a2a] transition"
+                        className="w-full mt-4 bg-button text-textPrimary py-3 rounded-xl font-bold uppercase border border-buttonBorder transition hover:bg-buttonHover"
                     >
                         Join Now
                     </button>

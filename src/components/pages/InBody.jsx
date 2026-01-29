@@ -114,7 +114,7 @@ Please contact me to confirm my appointment.
             </p>
 
             {/* FORM */}
-            <div className="mt-10 bg-surface rounded-xl p-6 max-w-xl">
+            <div className="mt-10 bg-section rounded-xl p-6 max-w-xl">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <h3 className="uppercase italic text-primary font-extrabold text-3xl">
                   Book Your Analysis

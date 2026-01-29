@@ -72,14 +72,14 @@ Requesting a nutrition consultation.
             <img
               src={NutriBg}
               alt="Nutrition Coaching at Plan B The Gym"
-              className="w-full min-h-[45vh] object-cover rounded-lg"
+              className="w-full min-h-[48vh] object-cover rounded-lg"
             />
           </div>
 
           {/* CENTER */}
           <div ref={formRef} className="order-1 lg:order-2 lg:col-span-2">
             <h2 className="uppercase italic font-extrabold text-3xl md:text-5xl">
-              Nutrition Coaching at PLAN B THE GYM
+              Nutrition Coaching at <br /> PLAN B THE GYM
             </h2>
 
             <p className="mt-4 text-lg text-textMuted">
@@ -92,9 +92,9 @@ Requesting a nutrition consultation.
             </p>
 
             {/* FORM */}
-            <div className="mt-10 bg-surface border border-divider rounded-xl p-6 max-w-xl">
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <h3 className="uppercase italic text-primary font-extrabold text-3xl">
+            <div className="mt-10 bg-section border border-divider rounded-xl p-6 max-w-xl">
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <h3 className="uppercase italic text-primary font-extrabold text-2xl">
                   Book a Nutrition Consultation
                 </h3>
 

@@ -73,7 +73,7 @@ Interested in booking a recovery session.
             <img
               src={recoveryBg}
               alt="Recovery at Plan B The Gym"
-              className="w-full min-h-[45vh] object-cover rounded-lg"
+              className="w-full min-h-[48vh] object-cover rounded-lg"
             />
           </div>
 
@@ -93,8 +93,8 @@ Interested in booking a recovery session.
             </p>
 
             {/* FORM */}
-            <div className="mt-10 bg-surface border border-divider rounded-xl p-6 max-w-xl">
-              <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="mt-10 bg-section border border-divider rounded-xl p-6 max-w-xl">
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <h3 className="uppercase italic text-textprimary font-extrabold text-3xl">
                   Book a Recovery Session
                 </h3>
