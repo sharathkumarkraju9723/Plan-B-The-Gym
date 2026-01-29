@@ -35,7 +35,7 @@ export default function ExperienceWaves() {
             Experience PLAN B THE GYM
           </h2>
 
-          <p className="text-textSubtle/60 mb-10">
+          <p className="text-textSubtle text-lg  mb-10">
             High-energy group workout designed to build strength, flexibility, and confidence
           </p>
 
@@ -63,14 +63,14 @@ export default function ExperienceWaves() {
               spaceBetween={24}
             >
               {images.map(({ img, title }) => (
-                <SwiperSlide key={title} className="!w-[320px] sm:!w-[420px]">
+                <SwiperSlide key={title} className="!w-[520px] sm:!w-[620px]">
                   <div className="relative rounded-xl overflow-hidden">
                     <img
                       src={img}
                       alt={title}
                       className="w-full h-64 object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/30" />
+                    <div className="absolute inset-0 bg-" />
                     <h3 className="absolute bottom-4 left-1/2 -translate-x-1/2 text-textLight font-bold">
                       {title}
                     </h3>

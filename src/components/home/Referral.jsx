@@ -48,7 +48,7 @@ https://chat.whatsapp.com/JsfMMkSXt3g0aecEOnTBCb`;
           Bring a Friend. Train Together.
         </h2>
 
-        <p className="text-textPrimary  mb-6">
+        <p className="text-textPrimary txet-textSubtle mb-6">
           Invite your friend to experience PLAN B THE GYM.
           Send them a WhatsApp invite and grow stronger together.
         </p>

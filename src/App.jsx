@@ -8,7 +8,7 @@ import Hero from "./components/home/Hero";
 import PersonalTrainers from "./components/home/PersonalTrainers";
 import GymZone from "./components/home/GymZone";
 import BestExperience from "./components/home/BestExperience";
-import ExperienceWaves from "./components/home/ExperienceWaves";
+import ExperiencePlanB from "./components/home/ExperiencePlanB";
 import Referral from "./components/home/Referral";
 import CoffeeZone from "./components/home/CoffeeZone";
 
@@ -44,7 +44,7 @@ export default function App() {
               <PersonalTrainers />
               <GymZone />
               <BestExperience />
-              <ExperienceWaves />
+              <ExperiencePlanB/>
               <Referral />
               <CoffeeZone />
             </>

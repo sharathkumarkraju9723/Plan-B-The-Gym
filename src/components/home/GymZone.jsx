@@ -16,11 +16,11 @@ export default function GymZone() {
         {/* Content */}
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
           <div>
-            <p className="text-textLight uppercase tracking-widest text-lg mb-3">
+            <p className="text-textLight/100 uppercase tracking-widest font-semibold text-lg mb-3">
               Experience the fitness in PLAN B
             </p>
 
-            <h2 className="text-textLight uppercase font-semibold italic text-3xl md:text-6xl">
+            <h2 className="text-textLight uppercase font-extrabold italic text-lg md:text-6xl">
               Spacious & Confortable <br /> Training Zone
             </h2>
 
@@ -30,7 +30,7 @@ export default function GymZone() {
               Join PLAN B Today
             </button>
 
-            <p className="mt-6 text-textLight uppercase tracking-widest text-sm mb-3">
+            <p className="mt-6 text-textLight uppercase tracking-widest text-lg mb-3">
               Explore flexible membership plans designed for your  fitness goals
             </p>
           </div>

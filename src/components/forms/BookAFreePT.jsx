@@ -74,7 +74,7 @@ Preferred Time: ${time}
       />
 
       {/* ONLY INNER FORM BOX */}
-      <div className="relative bg-surface border border-divider w-full max-w-xl mx-4 p-6 rounded-xl z-50">
+      <div className="relative bg-surface/90 border  w-full max-w-xl mx-4 p-6 rounded-xl z-50">
 
         {/* CLOSE */}
         <button
@@ -89,7 +89,7 @@ Preferred Time: ${time}
           Book Your Free Trial
         </h2>
 
-        <p className="text-sm text-textMuted mb-6">
+        <p className="text-bold text-textMuted mb-6">
           Train smarter at{" "}
           <span className="font-semibold text-textPrimary">
             PLAN B THE GYM

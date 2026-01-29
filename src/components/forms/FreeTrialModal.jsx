@@ -48,7 +48,7 @@ Please schedule my free trial.
       />
 
       {/* MODAL */}
-      <div className="relative bg-surface border border-divider w-full max-w-xl mx-4 p-6 rounded-xl z-50">
+      <div className="relative bg-surface/100 border border-divider w-full max-w-xl mx-4 p-6 rounded-xl z-50">
         {/* CLOSE */}
         <button
           onClick={onClose}
@@ -62,7 +62,7 @@ Please schedule my free trial.
           Start Your Free Trial
         </h2>
 
-        <p className="text-sm text-textMuted mb-6">
+        <p className="font bold text-textMuted mb-6">
           Experience training your way at{" "}
           <span className="font-semibold text-TextPrimary">
             PLAN B THE GYM

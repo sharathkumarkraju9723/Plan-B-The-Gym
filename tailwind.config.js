@@ -10,7 +10,7 @@ export default {
         /* BACKGROUNDS */
         base: "#F5F5F5",          // app background
         section: "#42424274",       // section background (light blackish)
-        surface: "#68676799",       // forms / cards (light blackish)
+        surface: "#e0e0e099",       // forms / cards (light blackish)
 
         /* BUTTONS */
         button: "#C2C5C9",        // silver gray
