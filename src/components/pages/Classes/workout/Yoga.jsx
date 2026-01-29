@@ -2,24 +2,7 @@ import { useRef, useState } from "react";
 import yogaBg from "../../../../assets/home/experience/yogabg.jpg";
 import yogaImg from "../../../../assets/images/yogaclasses.jpg";
 import { CONTACT } from "../../../config/Contact";
-
-// WEEKLY YOGA SCHEDULE
-const schedule = {
-    Monday: [
-        { time: "7:00 AM", title: "Yoga Flow", color: "bg-purple-600" },
-        { time: "6:30 PM", title: "Relax & Stretch", color: "bg-indigo-600" },
-    ],
-    Wednesday: [
-        { time: "7:00 AM", title: "Power Yoga", color: "bg-purple-600" },
-        { time: "6:30 PM", title: "Mobility Yoga", color: "bg-indigo-600" },
-    ],
-    Friday: [
-        { time: "6:30 PM", title: "Evening Yoga", color: "bg-purple-600" },
-    ],
-    Saturday: [
-        { time: "8:00 AM", title: "Weekend Yoga", color: "bg-indigo-600" },
-    ],
-};
+import { getScheduleByClass } from "../../../../utils/getScheduleByClass";
 
 export default function YogaClasses() {
     const formRef = useRef(null);
@@ -34,6 +17,9 @@ export default function YogaClasses() {
         Mobile: "",
         Email: "",
     });
+
+    //  7-DAY GLOBAL YOGA SCHEDULE
+    const schedule = getScheduleByClass("Yoga");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -143,9 +129,9 @@ Interested in trying a Yoga session.
                                         type="submit"
                                         disabled={submitted}
                                         className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border-2 transition 
-                                            ${submitted
+                      ${submitted
                                                 ? "bg-surface text-textSubtle border-divider cursor-not-allowed"
-                                                : "bg-button text-textPrimary border-buttonButton hover:bg-buttoHover"
+                                                : "bg-button text-textPrimary border-buttonButton hover:bg-buttonHover"
                                             }`}
                                     >
                                         {submitted ? "✓ Request Sent" : "Book Yoga Session"}
@@ -155,11 +141,13 @@ Interested in trying a Yoga session.
                                 {submitted && (
                                     <div className="bg-surface border border-divider p-3 rounded-lg text-center">
                                         <p className="font-bold">Request Sent Successfully</p>
-                                        <p className="text-sm text-textMuted">Our team will contact you shortly</p>
+                                        <p className="text-sm text-textMuted">
+                                            Our team will contact you shortly
+                                        </p>
                                     </div>
                                 )}
 
-                                {/* SHOW SCHEDULE BUTTON */}
+                                {/* SHOW SCHEDULE */}
                                 <div className="flex justify-center">
                                     <button
                                         type="button"
@@ -169,7 +157,7 @@ Interested in trying a Yoga session.
                                                 scheduleRef.current?.scrollIntoView({ behavior: "smooth" });
                                             }, 150);
                                         }}
-                                        className="inline-block px-6 py-2 text-sm bg-button text-textPrimary font-bold uppercase rounded-lg border border-buttonBorder hover:bg-buttonHover  transition"
+                                        className="inline-block px-6 py-2 text-sm bg-button text-textPrimary font-bold uppercase rounded-lg border border-buttonBorder hover:bg-buttonHover transition"
                                     >
                                         View Class Schedule
                                     </button>
@@ -202,7 +190,9 @@ Interested in trying a Yoga session.
                                 </button>
 
                                 {active === i && (
-                                    <div className="px-4 pb-4 text-sm text-textMuted">{a}</div>
+                                    <div className="px-4 pb-4 text-sm text-textMuted">
+                                        {a}
+                                    </div>
                                 )}
                             </div>
                         ))}
@@ -217,24 +207,35 @@ Interested in trying a Yoga session.
                                 Weekly Yoga Schedule
                             </h2>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                                {Object.entries(schedule).map(([day, classes]) => (
-                                    <div key={day} className="bg-surface p-4 rounded-xl shadow">
-                                        <h3 className="font-bold text-center mb-4">{day}</h3>
+                            {Object.keys(schedule).length === 0 ? (
+                                <p className="text-center text-textMuted">
+                                    No yoga sessions scheduled currently.
+                                </p>
+                            ) : (
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                    {Object.entries(schedule).map(([day, classes]) => (
+                                        <div key={day} className="bg-surface p-4 rounded-xl shadow">
+                                            <h3 className="font-bold text-center mb-4">{day}</h3>
 
-                                        {classes.map((item, i) => (
-                                            <div key={i} className="border border-divider rounded-lg overflow-hidden mb-3">
-                                                <div className={`${item.color} text-textLight px-3 py-1 text-sm font-bold`}>
-                                                    {item.time}
+                                            {classes.map((item, i) => (
+                                                <div
+                                                    key={i}
+                                                    className="border border-divider rounded-lg overflow-hidden mb-3"
+                                                >
+                                                    <div
+                                                        className={`${item.color} text-textLight px-3 py-1 text-sm font-bold`}
+                                                    >
+                                                        {item.time}
+                                                    </div>
+                                                    <div className="p-3 text-sm font-semibold text-textPrimary">
+                                                        {item.title}
+                                                    </div>
                                                 </div>
-                                                <div className="p-3 text-sm font-semibold text-textPrimary">
-                                                    {item.title}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
+                                            ))}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 )}

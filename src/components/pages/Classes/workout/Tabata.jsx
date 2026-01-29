@@ -1,24 +1,7 @@
 import { useRef, useState } from "react";
 import tabataBg from "../../../../assets/home/experience/tabata.jpg";
-import {CONTACT} from "../../../config/Contact";
-
-// WEEKLY TABATA SCHEDULE
-const schedule = {
-  Monday: [
-    { time: "7:00 AM", title: "Tabata Conditioning", color: "bg-rose-600" },
-    { time: "6:30 PM", title: "Tabata Burn", color: "bg-red-600" },
-  ],
-  Wednesday: [
-    { time: "7:00 AM", title: "Tabata Cardio", color: "bg-rose-600" },
-    { time: "6:30 PM", title: "Full Body Tabata", color: "bg-red-600" },
-  ],
-  Friday: [
-    { time: "6:30 PM", title: "Evening Tabata", color: "bg-rose-600" },
-  ],
-  Saturday: [
-    { time: "8:00 AM", title: "Weekend Tabata", color: "bg-red-600" },
-  ],
-};
+import { CONTACT } from "../../../config/Contact";
+import { getScheduleByClass } from "../../../../utils/getScheduleByClass";
 
 export default function TabataClasses() {
   const formRef = useRef(null);
@@ -33,6 +16,9 @@ export default function TabataClasses() {
     Mobile: "",
     Email: "",
   });
+
+  // 🔥 7-DAY GLOBAL TABATA SCHEDULE
+  const schedule = getScheduleByClass("Tabata");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -91,7 +77,7 @@ Interested in trying a Tabata session.
 
             <img
               src={tabataBg}
-              alt="Tabata Training"
+              alt="Tabata Training at Plan B The Gym"
               className="w-full min-h-[48vh] object-cover rounded-lg"
             />
           </div>
@@ -112,7 +98,7 @@ Interested in trying a Tabata session.
             </p>
 
             {/* FORM */}
-            <div className="mt-10 bg-section border border-divider rounded-xl p-6 sm:p-8 max-w-xl">
+            <div className="mt-10 border border-divider bg-base rounded-xl p-6 sm:p-8 max-w-xl">
               <form className="space-y-3" onSubmit={handleSubmit}>
                 <h3 className="uppercase italic font-extrabold text-3xl">
                   Try a Tabata Session
@@ -146,10 +132,9 @@ Interested in trying a Tabata session.
                     type="submit"
                     disabled={submitted}
                     className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border transition
-                      ${
-                        submitted
-                          ? "bg-surface text-textSubtle border-divider cursor-not-allowed"
-                          : "bg-button text-textPrimary border-buttonBorder hover:bg-buttonHover"
+                      ${submitted
+                        ? "bg-surface text-textSubtle border-divider cursor-not-allowed"
+                        : "bg-button text-textPrimary border-buttonBorder hover:bg-buttonHover"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Tabata Session"}
@@ -239,29 +224,35 @@ Interested in trying a Tabata session.
                 Weekly Tabata Schedule
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {Object.entries(schedule).map(([day, classes]) => (
-                  <div key={day} className="bg-surface p-4 rounded-xl shadow">
-                    <h3 className="font-bold text-center mb-4">{day}</h3>
+              {Object.keys(schedule).length === 0 ? (
+                <p className="text-center text-textMuted">
+                  No Tabata sessions scheduled currently.
+                </p>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {Object.entries(schedule).map(([day, classes]) => (
+                    <div key={day} className="bg-surface p-4 rounded-xl shadow">
+                      <h3 className="font-bold text-center mb-4">{day}</h3>
 
-                    {classes.map((item, i) => (
-                      <div
-                        key={i}
-                        className="border border-divider rounded-lg overflow-hidden mb-3"
-                      >
+                      {classes.map((item, i) => (
                         <div
-                          className={`${item.color} text-textLight px-3 py-1 text-sm font-bold`}
+                          key={i}
+                          className="border border-divider rounded-lg overflow-hidden mb-3"
                         >
-                          {item.time}
+                          <div
+                            className={`${item.color} text-textLight px-3 py-1 text-sm font-bold`}
+                          >
+                            {item.time}
+                          </div>
+                          <div className="p-3 text-sm font-semibold text-textPrimary">
+                            {item.title}
+                          </div>
                         </div>
-                        <div className="p-3 text-sm font-semibold text-textPrimary">
-                          {item.title}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}

@@ -1,26 +1,7 @@
 import { useRef, useState } from "react";
 import spinBg from "../../../../assets/home/experience/spin-class.jpg";
-import {CONTACT} from "../../../config/Contact";
-
-
-
-// WEEKLY SPIN SCHEDULE
-const schedule = {
-    Monday: [
-        { time: "6:30 AM", title: "Spin Training", color: "bg-indigo-600" },
-        { time: "7:00 PM", title: "Spin Training", color: "bg-indigo-700" },
-    ],
-    Wednesday: [
-        { time: "6:30 AM", title: "Spin Training", color: "bg-indigo-600" },
-        { time: "7:00 PM", title: "Spin Training", color: "bg-indigo-700" },
-    ],
-    Friday: [
-        { time: "7:00 PM", title: "Spin Training", color: "bg-indigo-600" },
-    ],
-    Saturday: [
-        { time: "8:00 AM", title: "Spin Training", color: "bg-indigo-700" },
-    ],
-};
+import { CONTACT } from "../../../config/Contact";
+import { getScheduleByClass } from "../../../../utils/getScheduleByClass";
 
 export default function SpinClasses() {
     const formRef = useRef(null);
@@ -35,6 +16,9 @@ export default function SpinClasses() {
         Mobile: "",
         Email: "",
     });
+
+    // 🔥 7-DAY GLOBAL SPIN SCHEDULE
+    const schedule = getScheduleByClass("Spin");
 
     // FORM SUBMIT
     const handleSubmit = (e) => {
@@ -81,7 +65,7 @@ Interested in trying a Spin Training session.
             <section className="bg-section text-textPrimary py-16">
                 <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
 
-                    {/* LEFT COLUMN */}
+                    {/* LEFT */}
                     <div className="order-3 lg:order-1 space-y-6">
                         <div className="w-full h-64 rounded-lg overflow-hidden border border-divider">
                             <iframe
@@ -99,17 +83,17 @@ Interested in trying a Spin Training session.
                         />
                     </div>
 
-                    {/* CENTER COLUMN */}
+                    {/* CENTER */}
                     <div ref={formRef} className="order-1 lg:order-2 lg:col-span-2">
                         <h2 className="uppercase italic font-extrabold text-3xl sm:text-4xl md:text-5xl">
                             Spin Classes at PLAN B THE GYM – Mysore
                         </h2>
 
-                        <p className="mt-6 text-lg justify-center text-textMuted">
+                        <p className="mt-6 text-lg text-textMuted">
                             Spin training is an instructor-led indoor cycling workout that
                             improves cardiovascular endurance while being easy on the joints.
                             Sessions combine music, resistance control, and guided intervals
-                            for an effective full lower-body workout.
+                            for an effective lower-body workout.
                         </p>
 
                         <p className="mt-4 text-lg text-textSubtle">
@@ -117,15 +101,15 @@ Interested in trying a Spin Training session.
                         </p>
 
                         {/* FORM */}
-                        <div className="mt-10 bg-section border border-divider rounded-xl p-6 sm:p-8 max-w-xl">
+                        <div className="mt-10 border border-divider bg-base rounded-xl p-6 sm:p-8 max-w-xl">
                             <form className="space-y-3" onSubmit={handleSubmit}>
-                                <h3 className="uppercase italic  font-extrabold text-3xl">
+                                <h3 className="uppercase italic font-extrabold text-3xl">
                                     Try a Spin Session
                                 </h3>
 
                                 <input
                                     placeholder="Name *"
-                                    className="w-full border border-divider bg-base  px-4 py-3 rounded"
+                                    className="w-full border border-divider bg-base px-4 py-3 rounded"
                                     onChange={(e) => setForm({ ...form, Name: e.target.value })}
                                 />
 
@@ -137,7 +121,7 @@ Interested in trying a Spin Training session.
 
                                 <input
                                     placeholder="Email (Optional)"
-                                    className="w-full border border-divider bg-base  px-4 py-3 rounded"
+                                    className="w-full border border-divider bg-base px-4 py-3 rounded"
                                     onChange={(e) => setForm({ ...form, Email: e.target.value })}
                                 />
 
@@ -146,15 +130,14 @@ Interested in trying a Spin Training session.
                                     I want to try a Spin Training session at PLAN B THE GYM
                                 </label>
 
-                                {/* BUTTONS – STACKED */}
                                 <div className="flex flex-col items-center gap-3">
                                     <button
                                         type="submit"
                                         disabled={submitted}
                                         className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border-2 transition
-                                             ${submitted
+                      ${submitted
                                                 ? "bg-surface text-textSubtle border-divider cursor-not-allowed"
-                                                : "bg-button text-textPrimary border-buttonButton hover:bg-buttoHover"
+                                                : "bg-button text-textPrimary border-buttonBorder hover:bg-buttonHover"
                                             }`}
                                     >
                                         {submitted ? "✓ Request Sent" : "Book Spin Session"}
@@ -168,7 +151,7 @@ Interested in trying a Spin Training session.
                                                 scheduleRef.current?.scrollIntoView({ behavior: "smooth" });
                                             }, 150);
                                         }}
-                                        className="inline-block px-6 py-2 text-sm bg-button text-textPrimary font-bold uppercase rounded-lg border border-buttonBorder hover:bg-buttonHover  transition"
+                                        className="inline-block px-6 py-2 text-sm bg-button text-textPrimary font-bold uppercase rounded-lg border border-buttonBorder hover:bg-buttonHover transition"
                                     >
                                         View Class Schedule
                                     </button>
@@ -177,14 +160,16 @@ Interested in trying a Spin Training session.
                                 {submitted && (
                                     <div className="bg-surface border border-divider p-3 rounded-lg text-center">
                                         <p className="font-bold">Request Sent Successfully</p>
-                                        <p className="text-sm text-textMuted">Our team will contact you shortly</p>
+                                        <p className="text-sm text-textMuted">
+                                            Our team will contact you shortly
+                                        </p>
                                     </div>
                                 )}
                             </form>
                         </div>
                     </div>
 
-                    {/* FAQ – REDUCED WIDTH */}
+                    {/* FAQ */}
                     <div className="order-2 lg:order-3 lg:col-span-3 mt-8">
                         <div className="max-w-3xl mx-auto">
                             <h3 className="uppercase italic font-extrabold text-3xl mb-6 text-center">
@@ -195,19 +180,19 @@ Interested in trying a Spin Training session.
                                 {[
                                     [
                                         "What is spin training?",
-                                        "Spin training is an indoor cycling workout focused on improving stamina, heart health, and lower-body strength."
+                                        "Spin training is an indoor cycling workout focused on stamina, heart health, and lower-body strength.",
                                     ],
                                     [
                                         "Is spin suitable for beginners?",
-                                        "Yes. Resistance and pace can be adjusted to match your fitness level."
+                                        "Yes. Resistance and pace can be adjusted to match your fitness level.",
                                     ],
                                     [
                                         "How long is a spin class?",
-                                        "Most spin sessions last around 45 minutes including warm-up and cooldown."
+                                        "Most spin sessions last around 45 minutes including warm-up and cooldown.",
                                     ],
                                     [
                                         "How often should I attend?",
-                                        "2–3 sessions per week is ideal for endurance and fat loss."
+                                        "2–3 sessions per week is ideal for endurance and fat loss.",
                                     ],
                                 ].map(([q, a], i) => (
                                     <div key={i} className="border-b border-divider last:border-b-0">
@@ -231,32 +216,45 @@ Interested in trying a Spin Training session.
                     </div>
                 </div>
 
-                {/* SCHEDULE BANNER */}
+                {/* SCHEDULE */}
                 {showSchedule && (
-                    <div ref={scheduleRef} className="mt-20 bg-gray-100 py-10">
+                    <div ref={scheduleRef} className="mt-20 bg-section py-16">
                         <div className="max-w-7xl mx-auto px-4">
-                            <h2 className="uppercase italic text-textPrimary font-bold text-4xl mb-10 text-center">
+                            <h2 className="uppercase italic font-bold text-4xl mb-10 text-center">
                                 Weekly Spin Schedule
                             </h2>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                                {Object.entries(schedule).map(([day, classes]) => (
-                                    <div key={day} className="bg-surface rounded-xl p-4 shadow">
-                                        <h3 className="font-bold text-lg mb-4 text-center">{day}</h3>
+                            {Object.keys(schedule).length === 0 ? (
+                                <p className="text-center text-textMuted">
+                                    No Spin sessions scheduled currently.
+                                </p>
+                            ) : (
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                    {Object.entries(schedule).map(([day, classes]) => (
+                                        <div key={day} className="bg-surface rounded-xl p-4 shadow">
+                                            <h3 className="font-bold text-lg mb-4 text-center">
+                                                {day}
+                                            </h3>
 
-                                        {classes.map((item, i) => (
-                                            <div key={i} className="border rounded-lg overflow-hidden mb-3">
-                                                <div className={`${item.color} text-textLight px-3 py-1 text-sm font-bold`}>
-                                                    {item.time}
+                                            {classes.map((item, i) => (
+                                                <div
+                                                    key={i}
+                                                    className="border rounded-lg overflow-hidden mb-3"
+                                                >
+                                                    <div
+                                                        className={`${item.color} text-textLight px-3 py-1 text-sm font-bold`}
+                                                    >
+                                                        {item.time}
+                                                    </div>
+                                                    <div className="p-3 text-sm font-semibold text-textPrimary">
+                                                        {item.title}
+                                                    </div>
                                                 </div>
-                                                <div className="p-3 text-sm font-semibold text-textPrimary">
-                                                    {item.title}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
+                                            ))}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 )}

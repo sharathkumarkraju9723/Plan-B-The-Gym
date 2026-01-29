@@ -2,20 +2,7 @@ import { useRef, useState } from "react";
 import zumbaBg from "../../../../assets/home/experience/zumba-fitness.jpg";
 import zumba from "../../../../assets/images/zumba.jpg";
 import { CONTACT } from "../../../config/Contact";
-
-// weekly zumba schedule
-const schedule = {
-  Monday: [
-    { time: "7:00 AM", title: "Morning Zumba", color: "bg-pink-600" },
-    { time: "6:30 PM", title: "Evening Zumba", color: "bg-red-500" },
-  ],
-  Wednesday: [
-    { time: "7:00 AM", title: "Dance Cardio", color: "bg-pink-600" },
-    { time: "6:30 PM", title: "Zumba Burn", color: "bg-red-500" },
-  ],
-  Friday: [{ time: "6:30 PM", title: "Weekend Warm-up", color: "bg-pink-600" }],
-  Saturday: [{ time: "8:00 AM", title: "Weekend Zumba", color: "bg-red-500" }],
-};
+import { getScheduleByClass } from "../../../../utils/getScheduleByClass";
 
 export default function ZumbaFitness() {
   const formRef = useRef(null);
@@ -27,7 +14,10 @@ export default function ZumbaFitness() {
 
   const [form, setForm] = useState({ Name: "", Mobile: "", Email: "" });
 
-  // whatsapp submit
+  // 7-DAY GLOBAL ZUMBA SCHEDULE
+  const schedule = getScheduleByClass("Zumba");
+
+  // WhatsApp submit
   const handleSubmit = (e) => {
     e.preventDefault();
     if (submitted || !form.Name || !form.Mobile) return;
@@ -50,7 +40,7 @@ Interested in trying a Zumba class.
 
   return (
     <>
-      {/* hero */}
+      {/* HERO */}
       <section
         className="relative min-h-[60vh] bg-contain bg-center flex items-center justify-center"
         style={{ backgroundImage: `url(${zumbaBg})` }}
@@ -61,12 +51,12 @@ Interested in trying a Zumba class.
             Zumba Fitness
           </h1>
           <p className="mt-4 text-lg sm:text-xl text-textLight/80">
-            fun, music-driven cardio workouts
+            Fun, music-driven cardio workouts
           </p>
         </div>
       </section>
 
-      {/* main */}
+      {/* MAIN */}
       <section className="bg-section text-textPrimary py-16">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
 
@@ -83,30 +73,30 @@ Interested in trying a Zumba class.
 
             <img
               src={zumba}
-              alt="zumba class"
+              alt="Zumba class at Plan B The Gym"
               className="w-full min-h-[45vh] object-cover rounded-lg"
             />
           </div>
 
-          {/* right: content + form */}
+          {/* CENTER */}
           <div ref={formRef} className="order-1 lg:order-2 lg:col-span-2">
             <h2 className="uppercase italic font-extrabold text-3xl sm:text-4xl md:text-5xl">
               Zumba Classes at PLAN B THE GYM – Mysore
             </h2>
 
             <p className="mt-4 text-lg text-textMuted">
-              High-energy dance workouts designed to improve endurance and calorie burn
+              High-energy dance workouts designed to improve endurance and calorie burn.
             </p>
 
             <p className="mt-4 text-lg text-textSubtle">
-              cardio fitness • fat burn • stress relief • full-body movement
+              Cardio fitness • Fat burn • Stress relief • Full-body movement
             </p>
 
-            {/* form */}
-            <div className="mt-8 bg-section border border-divider bg-base rounded-xl p-6 sm:p-8 max-w-xl">
+            {/* FORM */}
+            <div className="mt-8 border border-divider bg-base rounded-xl p-6 sm:p-8 max-w-xl">
               <form className="space-y-4" onSubmit={handleSubmit}>
-                <h3 className="uppercase italic  font-extrabold text-3xl">
-                  try a zumba class
+                <h3 className="uppercase italic font-extrabold text-3xl">
+                  Try a Zumba Class
                 </h3>
 
                 <input
@@ -117,19 +107,19 @@ Interested in trying a Zumba class.
 
                 <input
                   placeholder="Mobile *"
-                  className="w-full border border-divider bg-base  px-4 py-3 rounded"
+                  className="w-full border border-divider bg-base px-4 py-3 rounded"
                   onChange={(e) => setForm({ ...form, Mobile: e.target.value })}
                 />
 
                 <input
                   placeholder="Email (Optional)"
-                  className="w-full border border-divider bg-base  px-4 py-3 rounded"
+                  className="w-full border border-divider bg-base px-4 py-3 rounded"
                   onChange={(e) => setForm({ ...form, Email: e.target.value })}
                 />
 
                 <label className="flex gap-2 text-sm text-textSubtle">
                   <input type="checkbox" />
-                  i want to try a zumba class
+                  I want to try a Zumba class
                 </label>
 
                 <div className="flex justify-center">
@@ -139,7 +129,7 @@ Interested in trying a Zumba class.
                     className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border transition
                       ${submitted
                         ? "bg-surface text-textSubtle border-divider cursor-not-allowed"
-                        : "bg-button text-textPrimary border-buttonButton hover:bg-buttoHover"
+                        : "bg-button text-textPrimary border-buttonButton hover:bg-buttonHover"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Zumba Session"}
@@ -147,9 +137,11 @@ Interested in trying a Zumba class.
                 </div>
 
                 {submitted && (
-                  <div className="bg-surface border border-divider  p-3 rounded-lg text-center">
+                  <div className="bg-surface border border-divider p-3 rounded-lg text-center">
                     <p className="font-bold">Request Sent Successfully</p>
-                    <p className="text-sm text-textMuted">Our team will contact you shortly</p>
+                    <p className="text-sm text-textMuted">
+                      Our team will contact you shortly
+                    </p>
                   </div>
                 )}
 
@@ -163,7 +155,7 @@ Interested in trying a Zumba class.
                         scheduleRef.current?.scrollIntoView({ behavior: "smooth" });
                       }, 150);
                     }}
-                    className="inline-block px-6 py-2 text-sm bg-button text-textPrimary font-bold uppercase rounded-lg border border-buttonBorder hover:bg-buttonHover  transition"
+                    className="inline-block px-6 py-2 text-sm bg-button text-textPrimary font-bold uppercase rounded-lg border border-buttonBorder hover:bg-buttonHover transition"
                   >
                     View Class Schedule
                   </button>
@@ -172,7 +164,7 @@ Interested in trying a Zumba class.
             </div>
           </div>
 
-          {/* faq */}
+          {/* FAQ */}
           <div className="order-2 lg:order-3 lg:col-span-3 mt-10">
             <div className="max-w-3xl mx-auto">
               <h3 className="uppercase italic font-extrabold text-3xl mb-6 text-center">
@@ -207,32 +199,43 @@ Interested in trying a Zumba class.
           </div>
         </div>
 
-        {/* SCHEDULE BANNER */}
+        {/* SCHEDULE */}
         {showSchedule && (
-          <div ref={scheduleRef} className="mt-14 bg-section ">
-            <div className="max-w-7xl mx-auto px-40">
+          <div ref={scheduleRef} className="mt-20 bg-section py-16">
+            <div className="max-w-7xl mx-auto px-4">
               <h2 className="uppercase italic font-bold text-4xl mb-10 text-center">
-                weekly zumba schedule
+                Weekly Zumba Schedule
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {Object.entries(schedule).map(([day, classes]) => (
-                  <div key={day} className="bg-surface p-4 rounded-xl shadow">
-                    <h3 className="font-bold text-center mb-4">{day}</h3>
+              {Object.keys(schedule).length === 0 ? (
+                <p className="text-center text-textMuted">
+                  No Zumba sessions scheduled currently.
+                </p>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {Object.entries(schedule).map(([day, classes]) => (
+                    <div key={day} className="bg-surface p-4 rounded-xl shadow">
+                      <h3 className="font-bold text-center mb-4">{day}</h3>
 
-                    {classes.map((item, i) => (
-                      <div key={i} className="border border-divider rounded-lg overflow-hidden mb-3">
-                        <div className={`${item.color} text-textLight px-3 py-1 text-sm font-bold`}>
-                          {item.time}
+                      {classes.map((item, i) => (
+                        <div
+                          key={i}
+                          className="border border-divider rounded-lg overflow-hidden mb-3"
+                        >
+                          <div
+                            className={`${item.color} text-textLight px-3 py-1 text-sm font-bold`}
+                          >
+                            {item.time}
+                          </div>
+                          <div className="p-3 text-sm font-semibold text-textPrimary">
+                            {item.title}
+                          </div>
                         </div>
-                        <div className="p-3 text-sm font-semibold text-textPrimary">
-                          {item.title}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}
