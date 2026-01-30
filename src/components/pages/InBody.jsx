@@ -1,12 +1,16 @@
 import { useRef, useState } from "react";
 import bodyCompositionImg from "../../assets/home/features/BCA.png";
-import {CONTACT} from "../../components/config/Contact.js";
+import { CONTACT } from "../../components/config/Contact.js";
+import { useToast } from "../../hooks/useToast.js";
 
 
 export default function BodyComposition() {
   const formRef = useRef(null);
+  const { showToast } = useToast();
+
   const [active, setActive] = useState(null);
   const [submitted, setSubmitted] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -16,7 +20,11 @@ export default function BodyComposition() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.name || !form.mobile || submitted) return;
+    if (!form.name || !form.mobile || submitted) {
+      showToast("Please fill all required fields and accept the checkbox.");
+      return;
+
+    }
 
     const message = `
 Body Composition Analysis – PLAN B THE GYM
@@ -34,6 +42,7 @@ Please contact me to confirm my appointment.
     );
 
     setSubmitted(true);
+    showToast("✓ Request Sent Successfully! We’ll contact you shortly.");
   };
 
   const faqs = [
@@ -94,7 +103,7 @@ Please contact me to confirm my appointment.
             <img
               src={bodyCompositionImg}
               alt="Body Composition Analysis at Plan B The Gym"
-              className="w-full min-h-[45vh] object-cover rounded-lg"
+              className="w-full min-h-[50vh] object-cover rounded-lg"
             />
           </div>
 
@@ -139,7 +148,12 @@ Please contact me to confirm my appointment.
                 />
 
                 <label className="flex gap-2 text-sm text-textMuted">
-                  <input type="checkbox" required />
+                  <input
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    className="accent-black"
+                  />
                   Please contact me to confirm my appointment
                 </label>
 
@@ -148,22 +162,14 @@ Please contact me to confirm my appointment.
                     type="submit"
                     disabled={submitted}
                     className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border transition
-                      ${
-                        submitted
-                          ? "bg-green-600 text-textSubtle border-divider cursor-not-allowed"
-                          : "bg-primary text-textPrimary border-button hover:bg-buttonHover"
+                      ${submitted
+                        ? "bg-sectuon text-textPrimary border-divider cursor-not-allowed"
+                        : "bg-button text-textPrimary border-buttonBorder hover:bg-buttonHover"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Analysis"}
                   </button>
                 </div>
-
-                {submitted && (
-                  <div className="bg-surface border border-divider p-3 rounded-lg text-center">
-                    <p className="font-bold">Request Sent Successfully</p>
-                    <p className="text-sm text-textMuted">Our team will contact you shortly</p>
-                  </div>
-                )}
               </form>
             </div>
           </div>

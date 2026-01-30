@@ -1,12 +1,15 @@
 import { useRef, useState } from "react";
 import NutriBg from "../../assets/home/trainers/Nutri.png";
-import {CONTACT} from "../../components/config/Contact";
+import { CONTACT } from "../../components/config/Contact";
+import { useToast } from "../../hooks/useToast";
 
-const OWNER_WHATSAPP = "917899944483"; // PLAN B THE GYM
 
 export default function Nutrition() {
   const formRef = useRef(null);
   const [submitted, setSubmitted] = useState(false);
+  const { showToast } = useToast();
+  const  [agreed, setAgreed]  = useState(false);
+
 
   const [form, setForm] = useState({
     name: "",
@@ -17,7 +20,11 @@ export default function Nutrition() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.name || !form.mobile || submitted) return;
+    if (!form.name || !form.mobile || !agreed ||  submitted) {
+      showToast("Please fill all required fields and accept the checkbox.");
+      return;
+
+    }
 
     const message = `
 Nutrition Consultation Enquiry – PLAN B THE GYM
@@ -31,11 +38,12 @@ Requesting a nutrition consultation.
 `;
 
     window.open(
-      `https://wa.me/${CONTACT.OWNER_WHATSAPP}?text=${encodeURIComponent(message)}`,
+      `https://wa.me/${CONTACT.WHATSAPP_OWNER}?text=${encodeURIComponent(message)}`,
       "_blank"
     );
 
     setSubmitted(true);
+    showToast("Request Sent Successfully! We’ll contact you shortly.");
   };
 
   return (
@@ -72,7 +80,7 @@ Requesting a nutrition consultation.
             <img
               src={NutriBg}
               alt="Nutrition Coaching at Plan B The Gym"
-              className="w-full min-h-[48vh] object-cover rounded-lg"
+              className="w-full min-h-[55vh] object-cover rounded-lg"
             />
           </div>
 
@@ -93,7 +101,7 @@ Requesting a nutrition consultation.
 
             {/* FORM */}
             <div className="mt-10 bg-section border border-divider rounded-xl p-6 max-w-xl">
-              <form onSubmit={handleSubmit} className="space-y-3">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <h3 className="uppercase italic text-primary font-extrabold text-2xl">
                   Book a Nutrition Consultation
                 </h3>
@@ -112,7 +120,7 @@ Requesting a nutrition consultation.
 
                 <input
                   placeholder="Email (Optional)"
-                  className="w-full border border-borderdivider bg-base px-4 py-3 rounded"
+                  className="w-full border border-divider bg-base px-4 py-3 rounded"
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                 />
 
@@ -144,7 +152,12 @@ Requesting a nutrition consultation.
                 </div>
 
                 <label className="flex gap-2 text-sm text-textMuted">
-                  <input type="checkbox" required />
+                  <input
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    className="accent-black"
+                  />
                   I want to consult a nutrition coach
                 </label>
 
@@ -153,24 +166,14 @@ Requesting a nutrition consultation.
                     type="submit"
                     disabled={submitted}
                     className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border-2 transition
-                      ${
-                        submitted
-                          ? "bg-surface text-textSubtle border-divider cursor-not-allowed"
-                          : "bg-button text-textPrimary  border-buttonBorder hover:bg-buttonHover"
+                      ${submitted
+                        ? "bg-sect text-textPrimary border-divider cursor-not-allowed"
+                        : "bg-button text-textPrimary border-buttonBorder hover:bg-buttonHover"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Consultation"}
                   </button>
                 </div>
-
-                {submitted && (
-                  <div className="bg-surface border border-divider p-3 rounded-lg text-center">
-                    <p className="font-bold">Request Sent Successfully</p>
-                    <p className="text-sm text-textMuted">
-                      Our team will contact you shortly
-                    </p>
-                  </div>
-                )}
               </form>
             </div>
           </div>

@@ -15,9 +15,7 @@ const sitemap = [
   { label: "Recovery", path: "/recovery" },
   { label: "Nutrition", path: "/nutrition" },
   { label: "InBody", path: "/inbody" },
-  { label: "Location", path: "/location" },
-  { label: "Terms & Conditions", path: "/terms" },
-  { label: "Membership Policy", path: "/membership-policy" },
+  { label: "AboutUs", path: "/about-us" },
 ];
 
 const socials = [
@@ -43,13 +41,10 @@ export default function Footer() {
       <div className="h-px bg-divider" />
 
       {/* MAIN CONTENT */}
-      <div
-        className="
-          max-w-7xl mx-auto px-6 py-14 grid grid-cols-2 md:grid-cols-[1.2fr_1fr_1fr] gap-8 md:gap-10  items-start "
-      >
-        {/*  Brand + Address + Social (MOBILE ONLY) */}
-        <div className="space-y-10 max-w-xs sm:max-w-sm">
-          {/* BRAND */}
+      <div className="max-w-7xl mx-auto px-6 py-14 grid grid-cols-2 md:grid-cols-[1.2fr_1fr_1fr] gap-8 items-start">
+
+        {/* BRAND + ADDRESS */}
+        <div className="space-y-10 max-w-xs">
           <div className="space-y-4">
             <h3
               onClick={() => goTo("/")}
@@ -60,7 +55,7 @@ export default function Footer() {
 
             <p
               onClick={() => goTo("/location")}
-              className="text-sm text-textPrimary leading-relaxed cursor-pointer hover:text-textSubtle"
+              className="text-sm cursor-pointer hover:text-textSubtle hover:font-semibold"
             >
               2nd Floor, 557/A, New Kantharaj Urs Rd,<br />
               Near Sri S Nijalingappa Circle,<br />
@@ -69,49 +64,37 @@ export default function Footer() {
 
             <p className="text-sm">
               <strong>Phone:</strong>{" "}
-              <a href="tel:+919876543210" className="hover:underline hover:text-textSubtle">
+              <a
+                href="tel:+919876543210"
+                className="hover:underline hover:text-textSubtle"
+              >
                 +91 98765 43210
               </a>
             </p>
 
             <p className="text-sm">
               <strong>Email:</strong>{" "}
-              <a href="mailto:info@planbthegym.com" className="hover:underline  hover:text-textSubtle ">
+              <a
+                href="mailto:info@planbthegym.com"
+                className="hover:underline hover:text-textSubtle"
+              >
                 info@planbthegym.com
               </a>
             </p>
           </div>
-
-          {/* SOCIAL — MOBILE ONLY */}
-          <div className="space-y-3 md:hidden">
-            <h4 className="font-bold uppercase text-lg mb-1">Follow Us</h4>
-            <div className="grid grid-cols-3 gap-3 max-w-[160px]">
-              {socials.map(({ icon: Icon, url }, i) => (
-                <a
-                  key={i}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 border border-divider rounded-lg flex items-center justify-center hover:bg-button transition"
-                >
-                  <Icon />
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* Sitemap */}
-        <div className="space-y-4 max-w-xs">
-          <h4 className="font-bold uppercase text-lg mb-1">Sitemap</h4>
+        {/* SITEMAP */}
+        <div className="space-y-6 max-w-xs">
+          <h4 className="font-bold uppercase text-lg">Sitemap</h4>
           <ul className="space-y-1.5 text-sm">
             {sitemap.map(({ label, path }) => (
               <li
                 key={path}
                 onClick={() => goTo(path)}
                 className={`cursor-pointer w-fit transition ${pathname === path
-                  ? "text-textPrimary font-sm"
-                  : "text-textPeimary hover:text-textSubtle"
+                  ? "font-semibold"
+                  : "hover:text-textSubtle hover:font-semibold"
                   }`}
               >
                 {label}
@@ -120,17 +103,17 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/*  Social (DESKTOP ONLY) */}
+        {/* SOCIAL */}
         <div className="hidden md:block space-y-4 max-w-xs">
-          <h4 className="font-bold uppercase text-lg mb-1">Follow Us</h4>
-          <div className="grid grid-cols-3 gap-3 max-w-[160px]">
+          <h4 className="font-bold uppercase text-lg">Follow Us</h4>
+          <div className="grid grid-cols-2 gap-3 max-w-[160px]">
             {socials.map(({ icon: Icon, url }, i) => (
               <a
                 key={i}
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 border border-divider rounded-lg flex items-center justify-center hover:bg-button transition"
+                className="w-10 h-10 text-xl border border-divider rounded-lg flex items-center justify-center text-textMuted hover:text-textPrimary hover:bg-base transition"
               >
                 <Icon />
               </a>
@@ -140,10 +123,38 @@ export default function Footer() {
       </div>
 
       {/* BOTTOM BAR */}
-      <div className="border-t border-divider py-4 text-xs flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto px-6 text-textPrimary">
+      <div className="border-t border-divider py-4 text-sm flex flex-col sm:flex-row gap-2 sm:gap-0 justify-between items-center max-w-7xl mx-auto px-6">
+
         <p>© 2026 PLAN B THE GYM. All Rights Reserved.</p>
+
+        <p className="flex gap-2 items-center">
+          <span
+            onClick={() => goTo("/terms")}
+            className="cursor-pointer hover:text-textSubtle hover:font-semibold transition"
+          >
+            Terms & Conditions
+          </span>
+
+          <span className="font-bold">||</span>
+
+          <span
+            onClick={() => goTo("/membership-policy")}
+            className="cursor-pointer hover:text-textSubtle hover:font-semibold transition"
+          >
+            Membership Policy
+          </span>
+        </p>
+
         <p>
-          Developed by <span className="text-textSubtle/100">Envision Tech Sol</span>
+          Developed by{" "}
+          <a
+            href="https://envisiontechsol.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold hover:underline hover:text-textSubtle transition"
+          >
+            Envision Tech Sol
+          </a>
         </p>
       </div>
     </footer>

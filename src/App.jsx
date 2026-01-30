@@ -19,7 +19,7 @@ import Recovery from "./components/pages/Recovery";
 import InBody from "./components/pages/InBody";
 import Classes from "./components/pages/Classes/Classes";
 import Nutrition from "./components/pages/Nutrition";
-import Location from "./components/pages/Location";
+import AboutUs from "./components/pages/AboutUs";
 
 // WORKOUT PAGES
 import Hiit from "./components/pages/Classes/workout/Hiit";
@@ -57,7 +57,7 @@ export default function App() {
         <Route path="/inbody" element={<InBody />} />
         <Route path="/classes" element={<Classes />} />
         <Route path="/nutrition" element={<Nutrition/>}/>
-        <Route path="/location" element={<Location/>}/>
+        <Route path="/about-us" element={<AboutUs/>}/>
 
         <Route path="/classes/workout/hiit" element={<Hiit />} />
         <Route path="/classes/workout/tabata" element={<Tabata />} />

@@ -3,14 +3,17 @@ import zumbaBg from "../../../../assets/home/experience/zumba-fitness.jpg";
 import zumba from "../../../../assets/images/zumba.jpg";
 import { CONTACT } from "../../../config/Contact";
 import { getScheduleByClass } from "../../../../utils/getScheduleByClass";
+import { useToast } from "../../../../hooks/useToast";
 
 export default function ZumbaFitness() {
   const formRef = useRef(null);
   const scheduleRef = useRef(null);
+  const { showToast } = useToast();
 
   const [active, setActive] = useState(null);
   const [showSchedule, setShowSchedule] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   const [form, setForm] = useState({ Name: "", Mobile: "", Email: "" });
 
@@ -20,7 +23,10 @@ export default function ZumbaFitness() {
   // WhatsApp submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (submitted || !form.Name || !form.Mobile) return;
+    if (submitted || !form.Name || !form.Mobile) {
+      showToast("Please fill all required fields and accept the checkboc");
+      return;
+    }
 
     window.open(
       `https://wa.me/${CONTACT.WHATSAPP_OWNER}?text=${encodeURIComponent(`
@@ -36,6 +42,7 @@ Interested in trying a Zumba class.
     );
 
     setSubmitted(true);
+    showToast("✓ Request Sent Successfully! We’ll contact you shortly.")
   };
 
   return (
@@ -74,7 +81,7 @@ Interested in trying a Zumba class.
             <img
               src={zumba}
               alt="Zumba class at Plan B The Gym"
-              className="w-full min-h-[45vh] object-cover rounded-lg"
+              className="w-full min-h-[50vh] object-cover rounded-lg"
             />
           </div>
 
@@ -93,7 +100,7 @@ Interested in trying a Zumba class.
             </p>
 
             {/* FORM */}
-            <div className="mt-8 border border-divider bg-base rounded-xl p-6 sm:p-8 max-w-xl">
+            <div className="mt-8 border border-divider bg-section rounded-xl p-6 sm:p-8 max-w-xl">
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <h3 className="uppercase italic font-extrabold text-3xl">
                   Try a Zumba Class
@@ -118,7 +125,12 @@ Interested in trying a Zumba class.
                 />
 
                 <label className="flex gap-2 text-sm text-textSubtle">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    className="accent-black"
+                  />
                   I want to try a Zumba class
                 </label>
 
@@ -127,23 +139,14 @@ Interested in trying a Zumba class.
                     type="submit"
                     disabled={submitted}
                     className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border transition
-                      ${submitted
-                        ? "bg-surface text-textSubtle border-divider cursor-not-allowed"
-                        : "bg-button text-textPrimary border-buttonButton hover:bg-buttonHover"
+                     ${submitted
+                        ? "bg-sectuon text-textPrimary border-divider cursor-not-allowed"
+                        : "bg-button text-textPrimary border-buttonBorder hover:bg-buttonHover"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Zumba Session"}
                   </button>
                 </div>
-
-                {submitted && (
-                  <div className="bg-surface border border-divider p-3 rounded-lg text-center">
-                    <p className="font-bold">Request Sent Successfully</p>
-                    <p className="text-sm text-textMuted">
-                      Our team will contact you shortly
-                    </p>
-                  </div>
-                )}
 
                 {/* VIEW SCHEDULE */}
                 <div className="flex justify-center">
@@ -188,7 +191,7 @@ Interested in trying a Zumba class.
                     </button>
 
                     {active === i && (
-                      <div className="px-4 pb-4 text-sm text-textMuted">
+                      <div className="px-4 pb-4 text-sm font-semibold text-textMuted bg-base border border-divider justify-center">
                         {a}
                       </div>
                     )}

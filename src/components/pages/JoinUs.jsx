@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import tryBg from "../../assets/images/tryus.jpg";
 import { CONTACT } from "../config/Contact";
+import { useToast } from "../../hooks/useToast";
 
 export default function JoinUS() {
+  const formRef = useRef(null);
+  const { showToast } = useToast();
+
+
   const [active, setActive] = useState(null);
   const [submitted, setSubmitted] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   const [form, setForm] = useState({
     Name: "",
@@ -14,7 +20,10 @@ export default function JoinUS() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.Name || !form.Mobile || submitted) return;
+    if (!form.Name || !form.Mobile || submitted) {
+      showToast("Please fill all required fields and accept the checkbox.");
+      return;
+    }
 
     const message = `
 MEMBERSHIP ENQUIRY – PLAN B THE GYM
@@ -32,6 +41,9 @@ Please contact me with membership details.
     );
 
     setSubmitted(true);
+
+    showToast("✓ Request Sent Successfully! We’ll contact you shortly.");
+
   };
 
   return (
@@ -68,7 +80,7 @@ Please contact me with membership details.
             <img
               src={tryBg}
               alt="PLAN B THE GYM Membership"
-              className="w-full min-h-[45vh] object-cover rounded-lg"
+              className="w-full min-h-[50vh] object-cover rounded-lg"
             />
           </div>
 
@@ -88,7 +100,7 @@ Please contact me with membership details.
             </p>
 
             {/* FORM */}
-            <div className="mt-10 bg-section border  border-divider rounded-xl p-6 max-w-xl">
+            <div className="mt-10 bg-section border  border-divider rounded-xl p-7 max-w-xl">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <h3 className="uppercase italic font-extrabold text-3xl">
                   Enquire About Membership
@@ -119,7 +131,12 @@ Please contact me with membership details.
                 />
 
                 <label className="flex gap-2 text-sm text-textMuted">
-                  <input type="checkbox" required />
+                  <input
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    className="accent-black"
+                  />
                   I’m interested in joining PLAN B THE GYM
                 </label>
 
@@ -127,22 +144,15 @@ Please contact me with membership details.
                   <button
                     type="submit"
                     disabled={submitted}
-                    className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border transition
+                    className={`px-8 py-3 mb-4 text-sm font-extrabold uppercase rounded-lg border transition
                       ${submitted
-                        ? "bg-surface text-textSubtle border-divider cursor-not-allowed"
+                        ? "bg-sectuon text-textPrimary border-divider cursor-not-allowed"
                         : "bg-button text-textPrimary border-buttonBorder hover:bg-buttonHover"
                       }`}
                   >
-                    {submitted ? "✓ Request Sent" : "Request Membership Details"}
+                    {submitted ? "✓ Request Sent" : "Book Free Guest Pass"}
                   </button>
                 </div>
-
-                {submitted && (
-                  <div className="bg-surface  border border-divider  p-3 rounded-lg text-center">
-                    <p className=" font-bold">Request Sent Successfully</p>
-                    <p className=" text-sm text-textMuted">Our team will contact you shortly</p>
-                  </div>
-                )}
               </form>
             </div>
           </div>
@@ -154,7 +164,7 @@ Please contact me with membership details.
             Frequently Asked Questions
           </h3>
 
-          <div className="border border-divider  rounded-md overflow-hidden">
+          <div className="border border-divider  rounded-md overflow-hidden ">
             {[
               [
                 "What memberships are available?",
@@ -180,14 +190,14 @@ Please contact me with membership details.
               <div key={i} className="border-b border-divider last:border-b-0">
                 <button
                   onClick={() => setActive(active === i ? null : i)}
-                  className="w-full px-4 py-3 flex justify-between text-left font-medium hover:bg-section"
+                  className="w-full px-4 py-3 flex justify-between text-left font-medium hover:bg-section/20"
                 >
                   {q}
                   <span>{active === i ? "−" : "+"}</span>
                 </button>
 
                 {active === i && (
-                  <div className="px-4 pb-4 text-sm text-textMuted">
+                  <div className="px-4 pb-4 text-sm font-semibold text-textMuted bg-base border border-divider justify-center">
                     {a}
                   </div>
                 )}

@@ -1,13 +1,18 @@
 import { useRef, useState } from "react";
 import recoveryBg from "../../assets/images/recovery.png";
-import {CONTACT} from "../../components/config/Contact";
+import { CONTACT } from "../../components/config/Contact";
+import { useToast } from "../../hooks/useToast";
 
-const OWNER_WHATSAPP = "917899944483"; // PLAN B THE GYM
 
 export default function Recovery() {
   const formRef = useRef(null);
+  const { showToast } = useToast();
+
+
   const [active, setActive] = useState(null);
   const [submitted, setSubmitted] = useState(false);
+  const [agreed, setAgreed] = useState(false);
+
 
   const [form, setForm] = useState({
     Name: "",
@@ -18,7 +23,10 @@ export default function Recovery() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.Name || !form.Mobile || submitted) return;
+    if (!form.Name || !form.Mobile || submitted) {
+      showToast("Please fill all required fields and accept the checkbox.");
+      return;
+    }
 
     const message = `
 RECOVERY SESSION ENQUIRY – PLAN B THE GYM
@@ -37,6 +45,9 @@ Interested in booking a recovery session.
     );
 
     setSubmitted(true);
+
+    showToast("✓ Request Sent Successfully! We’ll contact you shortly.");
+
   };
 
   return (
@@ -73,7 +84,7 @@ Interested in booking a recovery session.
             <img
               src={recoveryBg}
               alt="Recovery at Plan B The Gym"
-              className="w-full min-h-[48vh] object-cover rounded-lg"
+              className="w-full min-h-[56vh] object-cover rounded-lg"
             />
           </div>
 
@@ -94,7 +105,7 @@ Interested in booking a recovery session.
 
             {/* FORM */}
             <div className="mt-10 bg-section border border-divider rounded-xl p-6 max-w-xl">
-              <form onSubmit={handleSubmit} className="space-y-3">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <h3 className="uppercase italic text-textprimary font-extrabold text-3xl">
                   Book a Recovery Session
                 </h3>
@@ -147,7 +158,12 @@ Interested in booking a recovery session.
 
 
                 <label className="flex gap-2 text-sm text-textMuted">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    className="accent-black"
+                  />
                   I want to book a recovery session
                 </label>
 
@@ -157,20 +173,13 @@ Interested in booking a recovery session.
                     disabled={submitted}
                     className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border transition
                       ${submitted
-                        ? "bg-surface text-textSubtle border-divider cursor-not-allowed"
-                        : "bg-button text-textPriary border-buttonBorder hover:bg-buttonHover"
+                        ? "bg-section text-textPrimary border-divider cursor-not-allowed"
+                        : "bg-button text-textPrimary border-buttonBorder hover:bg-buttonHover"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Recovery Session"}
                   </button>
                 </div>
-
-                {submitted && (
-                  <div className="bg-surface border border-divider  p-3 rounded-lg text-center">
-                    <p className="font-bold">Request Sent Successfully</p>
-                    <p className="text-sm text-textMuted" >Our team will contact you shortly</p>
-                  </div>
-                )}
               </form>
             </div>
           </div>
@@ -211,7 +220,7 @@ Interested in booking a recovery session.
                 </button>
 
                 {active === i && (
-                  <div className="px-4 pb-4 text-sm text-textMuted">
+                  <div className="px-4 pb-4 text-sm font-semibold text-textMuted bg-base border border-divider justify-center">
                     {a}
                   </div>
                 )}

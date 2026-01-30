@@ -2,11 +2,14 @@ import { useRef, useState } from "react";
 import tabataBg from "../../../../assets/home/experience/tabata.jpg";
 import { CONTACT } from "../../../config/Contact";
 import { getScheduleByClass } from "../../../../utils/getScheduleByClass";
+import { useToast } from "../../../../hooks/useToast";
 
 export default function TabataClasses() {
   const formRef = useRef(null);
   const scheduleRef = useRef(null);
+  const { showToast } = useToast();
 
+  const [agreed, setAgreed] = useState(false);
   const [active, setActive] = useState(null);
   const [showSchedule, setShowSchedule] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -17,12 +20,15 @@ export default function TabataClasses() {
     Email: "",
   });
 
-  // 🔥 7-DAY GLOBAL TABATA SCHEDULE
+  //  7-DAY GLOBAL TABATA SCHEDULE
   const schedule = getScheduleByClass("Tabata");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.Name || !form.Mobile || submitted) return;
+    if (!form.Name || !form.Mobile || submitted) {
+      showToast("Please fill all required fields and accept the checkboc");
+      return;
+    }
 
     const message = `
 Tabata Class Enquiry - PLAN B THE GYM
@@ -40,6 +46,7 @@ Interested in trying a Tabata session.
     );
 
     setSubmitted(true);
+    showToast("✓ Request Sent Successfully! We’ll contact you shortly.")
   };
 
   return (
@@ -78,7 +85,7 @@ Interested in trying a Tabata session.
             <img
               src={tabataBg}
               alt="Tabata Training at Plan B The Gym"
-              className="w-full min-h-[48vh] object-cover rounded-lg"
+              className="w-full min-h-[50vh] object-cover rounded-lg"
             />
           </div>
 
@@ -98,7 +105,7 @@ Interested in trying a Tabata session.
             </p>
 
             {/* FORM */}
-            <div className="mt-10 border border-divider bg-base rounded-xl p-6 sm:p-8 max-w-xl">
+            <div className="mt-10 border border-divider bg-section rounded-xl p-6 sm:p-8 max-w-xl">
               <form className="space-y-3" onSubmit={handleSubmit}>
                 <h3 className="uppercase italic font-extrabold text-3xl">
                   Try a Tabata Session
@@ -123,7 +130,12 @@ Interested in trying a Tabata session.
                 />
 
                 <label className="flex items-center gap-2 text-sm text-textMuted">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    className="accent-black"
+                  />
                   I want to try a Tabata workout at PLAN B THE GYM
                 </label>
 
@@ -133,22 +145,13 @@ Interested in trying a Tabata session.
                     disabled={submitted}
                     className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border transition
                       ${submitted
-                        ? "bg-surface text-textSubtle border-divider cursor-not-allowed"
+                        ? "bg-sectuon text-textPrimary border-divider cursor-not-allowed"
                         : "bg-button text-textPrimary border-buttonBorder hover:bg-buttonHover"
                       }`}
                   >
                     {submitted ? "✓ Request Sent" : "Book Tabata Session"}
                   </button>
                 </div>
-
-                {submitted && (
-                  <div className="bg-surface border border-divider p-3 rounded-lg text-center">
-                    <p className="font-bold">Request Sent Successfully</p>
-                    <p className="text-sm text-textMuted">
-                      Our team will contact you shortly
-                    </p>
-                  </div>
-                )}
 
                 {/* VIEW SCHEDULE */}
                 <div className="flex justify-center">
@@ -205,7 +208,7 @@ Interested in trying a Tabata session.
                     </button>
 
                     {active === i && (
-                      <div className="px-4 pb-4 text-sm text-textMuted">
+                      <div className="px-4 pb-4 text-sm font-semibold text-textMuted bg-base border border-divider justify-center">
                         {a}
                       </div>
                     )}

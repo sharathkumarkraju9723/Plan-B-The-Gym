@@ -11,7 +11,7 @@ const menuItems = [
   { label: "Nutrition", path: "/nutrition" },
   { label: "Inbody", path: "/inbody" },
   { label: "Classes", path: "/classes" },
-  { label: "Location", path: "/location" },
+  { label: "About Us", path: "/about-us" },
 ];
 
 export default function Navbar() {

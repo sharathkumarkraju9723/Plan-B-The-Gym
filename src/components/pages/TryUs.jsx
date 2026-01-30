@@ -7,7 +7,6 @@ export default function TryUs() {
   const formRef = useRef(null);
   const { showToast } = useToast();
 
-  const [active, setActive] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [agreed, setAgreed] = useState(false);
 
@@ -20,9 +19,9 @@ export default function TryUs() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // ❗ STRICT VALIDATION
+    // STRICT VALIDATION
     if (!form.Name || !form.Mobile || !agreed || submitted) {
-      showToast("Please fill all required fields and accept the checkbox.");
+      showToast("! Please fill all required fields and accept the checkbox.");
       return;
     }
 
@@ -45,7 +44,7 @@ Interested in trying the gym with a free guest pass.
 
     setSubmitted(true);
 
-    // ✅ BLACK SUCCESS TOAST
+    //  BLACK SUCCESS TOAST
     showToast("✓ Request Sent Successfully! We’ll contact you shortly.");
   };
 
@@ -93,8 +92,8 @@ Interested in trying the gym with a free guest pass.
               Free Guest Pass at PLAN B THE GYM – Mysore
             </h2>
 
-            <div className="mt-10 bg-section/50 border border-divider rounded-xl p-6 max-w-xl">
-              <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="mt-16 bg-section/50 border border-divider rounded-xl p-6 max-w-xl">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <h3 className="uppercase italic font-extrabold text-3xl">
                   Claim Your Free Guest Pass
                 </h3>
@@ -137,9 +136,9 @@ Interested in trying the gym with a free guest pass.
                   <button
                     type="submit"
                     disabled={submitted}
-                    className={`px-8 py-3 text-sm font-extrabold uppercase rounded-lg border transition
+                    className={`px-8 py-3 mb-4 text-sm font-extrabold uppercase rounded-lg border transition
                       ${submitted
-                        ? "bg-black text-white border-divider cursor-not-allowed"
+                        ? "bg-section text-textPrimary border-divider cursor-not-allowed"
                         : "bg-button text-textPrimary border-buttonBorder hover:bg-buttonHover"
                       }`}
                   >
